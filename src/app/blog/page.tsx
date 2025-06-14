@@ -5,9 +5,9 @@
  * Last updated: 2025-06-14
  * ======================================= */
 import BlogList from '@/components/blog/BlogList';
+import { blogData } from '@/data/blogData';
 import PageTitle from '@/components/common/PageTitle';
 import styles from '@/styles/PageBlog.module.scss';
-import { blogData } from '@/data/blogData';
 
 export default function BlogPage() {
   return (

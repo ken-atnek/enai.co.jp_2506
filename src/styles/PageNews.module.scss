@@ -1,0 +1,156 @@
+@use "variable" as *;
+@use "svg" as *;
+
+/* =================================
+** ブログリストレイアウト
+------------------------------ */
+.newsList {
+    position: relative;
+    font-size: inherit;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 2em 0;
+    li {
+        border: double 4px #81664b;
+        display: grid;
+        grid-row: span 4;
+        grid-template-rows: auto auto auto auto;
+        font-size: inherit;
+        gap: 0.5em 0;
+        padding: 2em 2em 1em;
+        .date {
+            justify-self: end;
+            font-size: FZ(16);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        h3 {
+            font-size: FZ(22);
+            color: $base-brown;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-align: justify;
+        }
+        .excerpt {
+            text-align: justify;
+            font-size: FZ(16);
+            letter-spacing: 0.08em;
+            line-height: 1.6em;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            margin-top: 0.5em;
+        }
+        .readMore {
+            justify-self: end;
+            color: $base-orange;
+            font-size: inherit;
+            margin-top: 1em;
+            transition: 0.3s ease-out;
+            span {
+                font-size: FZ(16);
+                &::after {
+                    content: ">";
+                    margin-left: 0.5em;
+                }
+            }
+            @include hover {
+                color: $base-brown;
+            }
+        }
+    }
+}
+
+/* =================================
+** ニュースページトップ
+------------------------------ */
+.containerNewsList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5em 2em;
+    article {
+        max-width: $articleMaxWidth;
+    }
+}
+
+/* =================================
+** ニュース詳細ページ
+------------------------------ */
+.containerDetailTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: inherit;
+    background-color: $light-brown;
+    padding: 1em 2em 5em;
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: $articleMaxWidth;
+        color: $base-brown;
+        .breadcrumb {
+            align-self: flex-end;
+            font-size: inherit;
+            display: flex;
+            align-items: center;
+            gap: 0 0.5em;
+            a {
+                position: relative;
+                font-size: FZ(14);
+                text-decoration: underline 1px solid;
+                padding-right: 0.5em;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    translate: 0 -50%;
+                    right: 0;
+                    width: 1px;
+                    height: 70%;
+                    background-color: $base-brown;
+                }
+            }
+            span {
+                font-size: FZ(14);
+                position: relative;
+            }
+        }
+        h3 {
+            margin-top: 4em;
+            @include Serif;
+            font-size: FZ(36);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+    }
+}
+.containerDetailContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5em 2em 8em;
+    gap: 5em 0;
+    article {
+        max-width: 90rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1em 0;
+        p {
+            font-size: FZ(16);
+            line-height: 2em;
+            text-align: justify;
+            letter-spacing: 0.08em;
+        }
+    }
+    .linkList {
+        font-size: FZ(16);
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        max-width: 90rem;
+        color: $base-orange;
+    }
+}

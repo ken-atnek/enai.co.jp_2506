@@ -7,8 +7,13 @@
 import ContainerFadeImage from '@/components/top/ContainerFadeImage';
 import styles from '@/styles/PageTop.module.scss';
 import { navMenu } from '@/data/navMenuData';
+import NewsList from '@/components/news/NewsList';
+import { newsData } from '@/data/newsData';
+import BlogList from '@/components/blog/BlogList';
+import { blogData } from '@/data/blogData';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ContainerPageNav from '@/components/top/ContainerPageNav';
 export const generateMetadata = (): Metadata => {
   return {
     title: '住宅型有料老人ホーム 梨園',
@@ -68,6 +73,31 @@ export default function Home() {
           </div>
         </article>
       </section>
+      <section className={styles.containerNews}>
+        <article>
+          <div className={styles.boxH2}>
+            <p className={styles.sidebarH2}>NEWS・UPDATE INFORMATION</p>
+            <h2>お知らせ・更新情報</h2>
+          </div>
+          <NewsList items={newsData.slice(0, 1)} />
+          <Link href="/news/" className={styles.linkPage}>
+            お知らせ・更新情報
+          </Link>
+        </article>
+      </section>
+      <section className={styles.containerBlog}>
+        <article>
+          <div className={styles.boxH2}>
+            <p className={styles.sidebarH2}>blog</p>
+            <h2>ブログ</h2>
+          </div>
+          <BlogList items={blogData.slice(0, 3)} />
+          <Link href="/blog/" className={styles.linkPage}>
+            ブログ一覧
+          </Link>
+        </article>
+      </section>
+      <ContainerPageNav />
     </>
   );
 }
