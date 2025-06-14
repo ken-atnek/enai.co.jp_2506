@@ -1,0 +1,188 @@
+@use "variable" as *;
+@use "svg" as *;
+/* stylelint-disable no-descending-specificity */
+// このファイル全体のルールを無効にする
+
+/* =================================
+** フェード画像
+------------------------------ */
+.containerFadeImage {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    background-color: #000;
+    overflow: hidden;
+    @include sp {
+        height: 78vh;
+        height: 78dvh;
+    }
+    .slideImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.8s ease-in-out;
+        z-index: 1;
+        &.active {
+            opacity: 1;
+            z-index: 2;
+        }
+    }
+    .boxTitle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        display: flex;
+        justify-content: space-between;
+        font-size: inherit;
+        padding: 2em;
+        .itemLogo {
+            font-size: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5em 0;
+            img {
+                width: 22rem;
+            }
+            span {
+                color: $base-brown;
+                font-size: FZ(24);
+                font-weight: 700;
+                letter-spacing: 0.04em;
+            }
+        }
+        nav {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            font-size: inherit;
+            gap: 0 1.6em;
+            a {
+                width: 216px;
+                height: 52px;
+                display: grid;
+                place-content: center;
+                font-size: FZ(18);
+                color: #fff;
+                font-weight: 500;
+                letter-spacing: 0.2em;
+                border-radius: 3px;
+                background-image: linear-gradient(
+                    138deg,
+                    #f2be65 0%,
+                    #e08c73 100%
+                );
+            }
+        }
+        @include sp {
+            font-size: FZ(24);
+        }
+    }
+}
+
+/* =================================
+** 「その人らしさ」を目指して
+------------------------------ */
+.containerMenu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: $light-brown;
+    padding: 2em 2em 4em;
+    nav {
+        position: relative;
+        font-size: inherit;
+        display: flex;
+        justify-content: center;
+        gap: 0 1.4em;
+        flex-wrap: wrap;
+        .itemLink {
+            letter-spacing: 0.08em;
+            font-size: FZ(16);
+            font-weight: 500;
+            color: $base-brown;
+            transition: 0.3s ease-out;
+            &.recruit {
+                color: $base-pink;
+                font-weight: 500;
+            }
+            @include hover {
+                color: $base-pink;
+            }
+        }
+    }
+    article {
+        max-width: $articleMaxWidth;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 7em;
+        h2 {
+            @include Serif;
+            font-size: FZ(36);
+            color: $base-brown;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+        }
+        p {
+            font-size: FZ(18);
+            margin-top: 2em;
+            letter-spacing: 0.08em;
+            line-height: 2em;
+            text-align: justify;
+        }
+    }
+}
+
+/* =================================
+** 梨園への思い
+------------------------------ */
+.containerGreeting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5em 2em;
+    article {
+        max-width: $articleMaxWidth;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2 {
+            @include Serif;
+            font-size: FZ(42);
+            color: $base-brown;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+        h3 {
+            font-size: FZ(20);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            margin-top: 2em;
+        }
+        p {
+            font-size: FZ(18);
+            text-align: justify;
+            letter-spacing: 0.08em;
+            line-height: 2em;
+            margin-top: 1em;
+        }
+        span {
+            align-self: flex-end;
+            line-height: 2em;
+        }
+        .pageLink {
+            font-size: inherit;
+            align-self: flex-end;
+            margin-top: 0.5em;
+        }
+    }
+}

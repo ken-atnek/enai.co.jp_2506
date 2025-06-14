@@ -1,0 +1,80 @@
+@use "./reset_v2.5" as *;
+@use "./variable" as *;
+@use "./svg" as *;
+body {
+    background-color: #fff;
+    color: $base-black;
+    @include SunSerif;
+    font-feature-settings: "palt";
+    font-size: clamp(1.2rem, calc($base-vw * 1vw) + calc($slice * 1px), 1.6rem);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: space-between;
+    width: 100%;
+    @include tbw {
+        overflow-x: clip;
+    }
+    @include tb {
+        font-size: 1.4vw;
+    }
+    @include sp {
+        font-size: 3.6vw;
+    }
+}
+main {
+    font-size: inherit;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+section,
+article,
+header,
+footer {
+    width: 100%;
+    position: relative;
+    font-size: inherit;
+    z-index: 1;
+}
+.page-link {
+    color: $base-orange;
+    display: flex;
+    font-size: inherit;
+    border: 2px solid;
+    border-radius: 100vmax;
+    padding: 1em;
+    transition: 0.3s ease-out;
+    span {
+        position: relative;
+        font-size: FZ(18);
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        padding-right: 1em;
+        transition: 0.3s ease-out;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 47%;
+            translate: 0 -50%;
+            right: 0;
+            width: 0.8em;
+            @include svg-arrow-top("ff9900");
+            rotate: 90deg;
+            transition: 0.3s ease-out;
+        }
+    }
+    @include hover {
+        background-color: $base-orange;
+        color: #fff;
+        span {
+            &::after {
+                @include svg-arrow-top("ffffff");
+            }
+        }
+    }
+}

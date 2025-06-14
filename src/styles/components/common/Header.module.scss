@@ -1,0 +1,180 @@
+@use "variable" as *;
+@use "svg" as *;
+.containerHeader {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 5;
+    transition: 0.5s ease-out;
+    background-color: $light-brown;
+    @include sp {
+        padding-inline: 0;
+    }
+    article {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 2rem;
+        padding-inline: 2em;
+        @include sp {
+            padding: 3vw 4vw;
+            max-width: unset;
+        }
+        .linkH1 {
+            font-size: inherit;
+            color: #fff;
+            transition: 0.3s ease-out;
+            h1 {
+                width: clamp(16rem, 18vw, 36rem);
+                @include sp {
+                    width: 45vw;
+                }
+                .logoMark {
+                    display: none;
+                }
+            }
+        }
+        nav {
+            position: relative;
+            font-size: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0 1.4em;
+            color: #595959;
+            .itemLink {
+                font-size: FZ(17);
+                text-transform: uppercase;
+                letter-spacing: 0.07em;
+                transition: 0.2s ease-out;
+                &.isActive {
+                    color: #04934a;
+                }
+                &:not(.isActive) {
+                    &:hover {
+                        color: #04934a;
+                    }
+                }
+                &.isMobile {
+                    display: none;
+                    @include sp {
+                        display: inline;
+                    }
+                }
+            }
+            @include sp {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                height: 100dvh;
+                flex-direction: column;
+                padding: 10vw 0;
+                background-color: #fff;
+                translate: 100vw;
+                transition: 0.3s ease-out;
+                opacity: 0;
+                gap: 6vw 0;
+                &.is-open {
+                    translate: 0;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &.isActive {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgb(0 0 0 / 10%); // Optional effect
+        z-index: 100;
+        align-items: center;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        .headComment {
+            display: flex;
+            color: $base-white;
+            background-color: #748184;
+            width: 100%;
+            justify-content: flex-end;
+            font-size: FZ(12);
+            padding: 0.8em 2em;
+            letter-spacing: 0.08em;
+        }
+        article {
+            padding-block: 1em;
+            justify-content: flex-start;
+            gap: 0 2em;
+            .linkH1 {
+                h1 {
+                    width: 5rem;
+                    .logo {
+                        display: none;
+                    }
+                    .logoMark {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    // TOPページのみ非表示
+    &.isTop {
+        display: none;
+    }
+}
+.hamburgerButton {
+    position: fixed;
+    top: 4vw;
+    right: 4vw;
+    width: 10vw;
+    aspect-ratio: 1;
+    border: solid 2px #fff;
+    z-index: 100;
+    display: none;
+    @include sp {
+        display: block;
+    }
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60%;
+        height: 2px;
+        background-color: #fff;
+        transition: 0.3s ease-out;
+        &:nth-of-type(1) {
+            translate: -50% calc(-50% - 5px);
+        }
+        &:nth-of-type(2) {
+            translate: -50% -50%;
+        }
+        &:nth-of-type(3) {
+            translate: -50% calc(-50% + 5px);
+        }
+    }
+    &.is-open {
+        span {
+            transition: 0.3s ease-out;
+            &:nth-of-type(1) {
+                translate: -50% -50%;
+                rotate: 45deg;
+            }
+            &:nth-of-type(2) {
+                translate: 150% -50%;
+                opacity: 0;
+            }
+            &:nth-of-type(3) {
+                translate: -50% -50%;
+                rotate: -45deg;
+            }
+        }
+    }
+}

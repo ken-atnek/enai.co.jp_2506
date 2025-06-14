@@ -1,0 +1,55 @@
+@use "variable" as *;
+@use "svg" as *;
+.containerTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: inherit;
+    background-color: $light-brown;
+    padding: 1em 2em 4em;
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: $articleMaxWidth;
+        color: $base-brown;
+        .breadcrumb {
+            align-self: flex-end;
+            font-size: inherit;
+            display: flex;
+            align-items: center;
+            gap: 0 0.5em;
+            a {
+                font-size: FZ(14);
+                text-decoration: underline 1px solid;
+            }
+            span {
+                font-size: FZ(14);
+                position: relative;
+                padding-left: 0.5em;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    translate: 0 -50%;
+                    left: 0;
+                    width: 1px;
+                    height: 70%;
+                    background-color: $base-brown;
+                }
+            }
+        }
+        .titleEn {
+            @include Aleo;
+            font-size: FZ(36);
+            color: $base-brown;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            margin-top: 4em;
+        }
+        h3 {
+            font-size: FZ(18);
+            margin-top: 1em;
+        }
+    }
+}
