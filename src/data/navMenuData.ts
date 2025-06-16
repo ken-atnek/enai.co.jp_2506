@@ -11,6 +11,6 @@ export const navMenu = [
   { href: '#', label: '料金・サービス' },
   { href: '/blog/', label: '梨園のブログ' },
   { href: '/recruit/', label: '採用情報' },
-  { href: '#', label: 'お問い合わせ' },
-  { href: '#', label: '縁合について' },
+  { href: '/contact/', label: 'お問い合わせ' },
+  { href: '/about-enai/', label: '縁合について' },
 ];

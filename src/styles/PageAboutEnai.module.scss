@@ -1,0 +1,138 @@
+@use "variable" as *;
+@use "svg" as *;
+/* stylelint-disable no-descending-specificity */
+// このファイル全体のルールを無効にする
+
+/* =================================
+** 縁合について
+------------------------------ */
+.containerAboutEnai {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 2em 3em;
+    .boxDetailsList {
+        position: relative;
+        width: 100%;
+        font-size: inherit;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        margin-block: 1.6em;
+        dl {
+            font-size: inherit;
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: subgrid;
+            padding-block: 0.8em;
+            gap: 0 8em;
+            border-bottom: solid 1px rgba(129, 102, 75, 0.1);
+            dt {
+                color: $base-brown;
+                font-size: FZ(18);
+                font-weight: 600;
+                align-self: center;
+            }
+            dd {
+                font-size: FZ(18);
+                & > * {
+                    font-size: inherit;
+                }
+                address {
+                    display: flex;
+                    gap: 0 1em;
+                }
+            }
+            &:first-of-type {
+                border-top: solid 1px rgba(129, 102, 75, 0.1);
+            }
+            &:nth-of-type(2n) {
+                background-color: rgba(129, 102, 75, 0.02);
+            }
+        }
+    }
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: $articleMaxWidth;
+    }
+    .blockHead {
+        .boxDetailsList {
+            margin-bottom: 5em;
+        }
+        p {
+            align-self: stretch;
+            font-size: FZ(18);
+            line-height: 1.8em;
+            letter-spacing: 0.08em;
+        }
+        .wrapLink {
+            align-self: flex-end;
+            font-size: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5em 0;
+        }
+    }
+    .blockFacilityOverview {
+        padding: 5em 0 3em;
+        h3 {
+            color: $base-brown;
+            font-size: FZ(36);
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+        .boxDetailsList {
+            .wrapDetail {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 0.8em 0;
+                div {
+                    display: grid;
+                    grid-column: span 2;
+                    grid-template-columns: subgrid;
+                    gap: 0 1em;
+                }
+            }
+            ul {
+                display: flex;
+                flex-direction: column;
+                font-size: inherit;
+                gap: 0.8em 0;
+                li {
+                    font-size: inherit;
+                    display: flex;
+                    gap: 0 1em;
+                    a {
+                        font-size: inherit;
+                        color: $base-orange;
+                    }
+                }
+            }
+            p {
+                margin-top: 0.8em;
+            }
+        }
+        .listImage {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3em 5em;
+            font-size: inherit;
+            margin-top: 2em;
+            img {
+                width: 100%;
+                object-fit: cover;
+                aspect-ratio: 9/7;
+            }
+        }
+        .announce {
+            font-size: FZ(18);
+            align-self: flex-start;
+            letter-spacing: 0.08em;
+            margin-top: 2em;
+        }
+    }
+}
