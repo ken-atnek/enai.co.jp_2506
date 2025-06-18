@@ -15,7 +15,15 @@ import ImageList04 from '@/assets/images/about-enai/list04.webp';
 import ImageList05 from '@/assets/images/about-enai/list05.webp';
 import ImageList06 from '@/assets/images/about-enai/list06.webp';
 import Link from 'next/link';
-
+import ExternalLink from '@/components/common/ExternalLink';
+import type { Metadata } from 'next';
+export const generateMetadata = (): Metadata => {
+  return {
+    title: '縁合について｜合同会社 縁合',
+    description:
+      '縁合（えんあい）は、住宅型有料老人ホーム 梨園（りえん）、訪問介護事業所 梨園、いにしえ通所介護事業所、梨園 居宅介護支援事業所を運営する合同会社です。',
+  };
+};
 export default function AboutEnaiPage() {
   return (
     <>
@@ -61,9 +69,12 @@ export default function AboutEnaiPage() {
             合同会社縁合は男女ともに、そして子育て中の方や障がい者の方などどんな人にとっても働きやすい職場を目指しています。
           </p>
           <div className={styles.wrapLink}>
-            <Link href="#" className="page-link">
+            <ExternalLink
+              href="https://www.city.arao.lg.jp/oshirase/shisei/shisaku/danjyo-kyodo/page11779.html"
+              className="page-link"
+            >
               <span>詳しく見る</span>
-            </Link>
+            </ExternalLink>
             <p>※外部サイトに移動します。</p>
           </div>
         </article>
@@ -131,13 +142,16 @@ export default function AboutEnaiPage() {
               <dt>併発施設</dt>
               <ul>
                 <li>
-                  訪問介護事業所　梨園<Link href="#">詳細情報を見る</Link>
+                  訪問介護事業所　梨園
+                  <Link href="/concept/helper-station/">詳細情報を見る</Link>
                 </li>
                 <li>
-                  いにしえ通所介護事業所<Link href="#">詳細情報を見る</Link>
+                  いにしえ通所介護事業所
+                  <Link href="/concept/day-service/">詳細情報を見る</Link>
                 </li>
                 <li>
-                  梨園　居宅介護支援事業所<Link href="#">詳細情報を見る</Link>
+                  梨園　居宅介護支援事業所
+                  <Link href="/concept/home-care/">詳細情報を見る</Link>
                 </li>
               </ul>
             </dl>

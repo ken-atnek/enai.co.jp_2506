@@ -3,7 +3,7 @@
  * URL:src/components/ContainerFadeImage.tsx
  * Referenced in: src/app/page.tsx
  * Created: 2025-06-13
- * Last updated: 2025-06-13
+ * Last updated: 2025-06-17
  * ======================================= */
 'use client';
 import styles from '@/styles/PageTop.module.scss';
@@ -47,7 +47,7 @@ const ContainerFadeImage = () => {
           <Link href="/blog/" className={styles.itemLink}>
             梨園のブログ
           </Link>
-          <Link href="#" className={styles.itemLink}>
+          <Link href="/concept/" className={styles.itemLink}>
             縁合について
           </Link>
         </nav>

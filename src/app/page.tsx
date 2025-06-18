@@ -67,7 +67,7 @@ export default function Home() {
           <span>合同会社　縁合</span>
           <span>代表社員　藪内　佳代子</span>
           <div className={styles.pageLink}>
-            <Link href="#" className="page-link">
+            <Link href="/concept/" className="page-link">
               <span>梨園について</span>
             </Link>
           </div>

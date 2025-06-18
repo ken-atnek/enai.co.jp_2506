@@ -1,8 +1,8 @@
 /* =======================================
  * 料金・サービス
- * URL:src/app/about-enai/page.tsx
- * Created: 2025-06-14
- * Last updated: 2025-06-14
+ * URL:src/app/service/page.tsx
+ * Created: 2025-06-16
+ * Last updated: 2025-06-18
  * ======================================= */
 
 import PageTitle from '@/components/common/PageTitle';
@@ -10,7 +10,14 @@ import styles from '@/styles/PageService.module.scss';
 import Image from 'next/image';
 import block01Image from '@/assets/images/service/service-image.webp';
 import ExternalLink from '@/components/common/ExternalLink';
-
+import type { Metadata } from 'next';
+export const generateMetadata = (): Metadata => {
+  return {
+    title: '料金・サービス｜住宅型有料老人ホーム 梨園',
+    description:
+      '住宅型有料老人ホーム 梨園では、建物清掃・設備管理・警備業務など、快適な環境づくりを支える多様なサービスを提供しています。信頼と実績で地域社会に貢献します。',
+  };
+};
 export default function ServicePage() {
   return (
     <>

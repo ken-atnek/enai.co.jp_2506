@@ -2,7 +2,7 @@
  * 採用情報
  * URL: src/app/recruit/page.tsx
  * Created: 2025-06-14
- * Last updated: 2025-06-14
+ * Last updated: 2025-06-18
  * ======================================= */
 
 import PageTitle from '@/components/common/PageTitle';
@@ -12,7 +12,14 @@ import ImageHead02 from '@/assets/images/recruit/head02.webp';
 import ImageHead03 from '@/assets/images/recruit/head03.webp';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import type { Metadata } from 'next';
+export const generateMetadata = (): Metadata => {
+  return {
+    title: '採用情報｜住宅型有料老人ホーム 梨園',
+    description:
+      '合同会社 縁合では、一緒に働く仲間を募集しています。未経験者歓迎・寮完備・充実した福利厚生で、安心して働ける環境を整えています。熊本で安定した仕事を探している方はぜひご応募ください。',
+  };
+};
 export default function RecruitPage() {
   return (
     <>
@@ -124,7 +131,7 @@ export default function RecruitPage() {
               </dd>
             </dl>
           </div>
-          <Link href="/contact/" className={styles.linkContact}>
+          <Link href="/form/" className={styles.linkContact}>
             応募する
           </Link>
         </article>
@@ -213,7 +220,7 @@ export default function RecruitPage() {
               </dd>
             </dl>
           </div>
-          <Link href="/contact/" className={styles.linkContact}>
+          <Link href="/form/" className={styles.linkContact}>
             応募する
           </Link>
         </article>

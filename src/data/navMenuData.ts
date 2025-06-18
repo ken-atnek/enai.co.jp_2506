@@ -7,7 +7,7 @@
 export const navMenu = [
   { href: '/', label: 'トップページ' },
   { href: '/news/', label: 'お知らせ・更新情報' },
-  { href: '#', label: '梨園について' },
+  { href: '/concept/', label: '梨園について' },
   { href: '/service/', label: '料金・サービス' },
   { href: '/blog/', label: '梨園のブログ' },
   { href: '/recruit/', label: '採用情報' },

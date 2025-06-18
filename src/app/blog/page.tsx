@@ -8,7 +8,14 @@ import BlogList from '@/components/blog/BlogList';
 import { blogData } from '@/data/blogData';
 import PageTitle from '@/components/common/PageTitle';
 import styles from '@/styles/PageBlog.module.scss';
-
+import type { Metadata } from 'next';
+export const generateMetadata = (): Metadata => {
+  return {
+    title: '梨園のブログ｜住宅型有料老人ホーム 梨園',
+    description:
+      '住宅型有料老人ホーム 梨園のスタッフブログでは、日々の出来事や職場の雰囲気、採用情報に関するお知らせなどを発信中。エナイのリアルな魅力を感じていただけます。',
+  };
+};
 export default function BlogPage() {
   return (
     <>

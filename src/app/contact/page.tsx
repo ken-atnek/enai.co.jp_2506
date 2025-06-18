@@ -2,14 +2,21 @@
  * お問い合わせ
  * URL: src/app/contact/page.tsx
  * Created: 2025-06-14
- * Last updated: 2025-06-14
+ * Last updated: 2025-06-18
  * ======================================= */
 
 import PageTitle from '@/components/common/PageTitle';
 import styles from '@/styles/PageContact.module.scss';
 
 import Link from 'next/link';
-
+import type { Metadata } from 'next';
+export const generateMetadata = (): Metadata => {
+  return {
+    title: 'お問い合わせ｜住宅型有料老人ホーム 梨園',
+    description:
+      '住宅型有料老人ホーム 梨園へのお問い合わせはこちらの専用フォームから承っております。ご質問・ご相談・求人に関するお問い合わせなど、お気軽にご連絡ください。。',
+  };
+};
 export default function ContactPage() {
   return (
     <>

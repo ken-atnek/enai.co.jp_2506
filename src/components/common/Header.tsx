@@ -16,7 +16,6 @@ const Header = () => {
   const pathname = usePathname();
   const isTop = pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -54,27 +53,9 @@ const Header = () => {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth > 768) {
-        setIsScrolled(window.scrollY > 150);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    // Run once on mount in case already scrolled
-    handleScroll();
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <header
-      className={`${styles.containerHeader} ${
-        isScrolled ? styles.isActive : ''
-      } ${isTop ? styles.isTop : ''}`}
+      className={`${styles.containerHeader} ${isTop ? styles.isTop : ''}`}
     >
       <article>
         <Link href="/" className={styles.linkH1}>
