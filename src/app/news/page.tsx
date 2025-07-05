@@ -4,8 +4,9 @@
  * Created: 2025-06-14
  * Last updated: 2025-06-14
  * ======================================= */
-import NewsList from '@/components/news/NewsList';
-import { newsData } from '@/data/newsData';
+// import NewsList from '@/components/news/NewsList';
+// import { newsData } from '@/data/newsData';
+import NewsClient from '@/components/news/NewsClient';
 import PageTitle from '@/components/common/PageTitle';
 import styles from '@/styles/PageNews.module.scss';
 import type { Metadata } from 'next';
@@ -25,7 +26,8 @@ export default function NewsPage() {
       />
       <section className={styles.containerNewsList}>
         <article>
-          <NewsList items={newsData} />
+          {/* <NewsList items={newsData} /> */}
+          <NewsClient />
         </article>
       </section>
     </>

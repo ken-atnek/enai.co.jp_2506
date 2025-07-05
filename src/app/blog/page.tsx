@@ -4,8 +4,9 @@
  * Created: 2025-06-14
  * Last updated: 2025-06-14
  * ======================================= */
-import BlogList from '@/components/blog/BlogList';
-import { blogData } from '@/data/blogData';
+// import BlogList from '@/components/blog/BlogList';
+// import { blogData } from '@/data/blogData';
+import BlogClient from '@/components/blog/BlogClient';
 import PageTitle from '@/components/common/PageTitle';
 import styles from '@/styles/PageBlog.module.scss';
 import type { Metadata } from 'next';
@@ -22,7 +23,8 @@ export default function BlogPage() {
       <PageTitle title="梨園のブログ" titleEn="OFFICIAL BLOG" />
       <section className={styles.containerBlogList}>
         <article>
-          <BlogList items={blogData} />
+          {/* <BlogList items={blogData} /> */}
+          <BlogClient />
         </article>
       </section>
     </>
