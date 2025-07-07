@@ -124,7 +124,6 @@ export default function Contact() {
         setStatus(result.error || '送信に失敗しました。');
       }
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error('エラー:', error);
       setStatus('エラーが発生しました。');
     } finally {
