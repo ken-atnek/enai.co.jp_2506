@@ -28,7 +28,7 @@ export default function BlogClient() {
   const [page, setPage] = useState(0);
   const fetchData = (page: number) => {
     const offset = page * PER_PAGE;
-    fetch(`http://192.168.9.34:8081/kagoya2/enai.co.jp/public_html/api/blog/index.php?limit=${PER_PAGE}&offset=${offset}`)
+    fetch(`https://demo-enai.tuna-pic.co.jp/api/blog/index.php?limit=${PER_PAGE}&offset=${offset}`)
       .then((res) => {
         if (!res.ok) throw new Error('API接続エラー');
         return res.json();
