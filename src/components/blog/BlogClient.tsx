@@ -7,7 +7,7 @@
  * ======================================= */
 
 import { useEffect, useState } from 'react';
-import BlogList from './BlogList';
+import BlogList from '@/components/blog/BlogList';
 import type { BlogItem } from '@/types/blog';
 
 type ApiBlogItem = {
@@ -28,12 +28,14 @@ export default function BlogClient() {
   const [page, setPage] = useState(0);
   const fetchData = (page: number) => {
     const offset = page * PER_PAGE;
-    fetch(`https://demo-enai.tuna-pic.co.jp/api/blog/index.php?limit=${PER_PAGE}&offset=${offset}`)
+    fetch(
+      `https://demo-enai.tuna-pic.co.jp/api/blog/index.php?limit=${PER_PAGE}&offset=${offset}`
+    )
       .then((res) => {
         if (!res.ok) throw new Error('API接続エラー');
         return res.json();
       })
-      .then((data:ApiBlogItem[]) => {
+      .then((data: ApiBlogItem[]) => {
         const converted: BlogItem[] = data.map((item: ApiBlogItem) => ({
           id: String(item.k_id),
           date: item.k_date || '',
@@ -68,9 +70,7 @@ export default function BlogClient() {
           )}
           {/* Nextボタンは最終ページで非表示 */}
           {items.length === PER_PAGE && (
-            <button onClick={() => setPage((prev) => prev + 1)}>
-              Next →
-            </button>
+            <button onClick={() => setPage((prev) => prev + 1)}>Next →</button>
           )}
         </div>
       )}

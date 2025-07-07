@@ -7,7 +7,7 @@
  * ======================================= */
 
 import { useEffect, useState } from 'react';
-import NewsList from './NewsList';
+import NewsList from '@/components/news/NewsList';
 import type { NewsItem } from '@/types/news';
 
 type ApiNewsItem = {
@@ -26,19 +26,26 @@ export default function NewsClient() {
   const [page, setPage] = useState(0);
   const fetchData = (page: number) => {
     const offset = page * PER_PAGE;
-    fetch(`https://demo-enai.tuna-pic.co.jp/api/news/?limit=${PER_PAGE}&offset=${offset}`)
+    fetch(
+      `https://demo-enai.tuna-pic.co.jp/api/news/?limit=${PER_PAGE}&offset=${offset}`
+    )
       .then((res) => {
         if (!res.ok) throw new Error('API接続エラー');
         return res.json();
       })
-      .then((data:ApiNewsItem[]) => {
+      .then((data: ApiNewsItem[]) => {
         const converted: NewsItem[] = data.map((item: ApiNewsItem) => ({
           id: String(item.k_id),
           date: item.k_date || '',
           title: item.k_title,
           body: {
             excerpt: '',
-            content: <div className="newsContent" dangerouslySetInnerHTML={{ __html: item.k_body }} />,
+            content: (
+              <div
+                className="newsContent"
+                dangerouslySetInnerHTML={{ __html: item.k_body }}
+              />
+            ),
           },
         }));
         setItems(converted);
@@ -64,9 +71,7 @@ export default function NewsClient() {
           )}
           {/* Nextボタンは最終ページで非表示 */}
           {items.length === PER_PAGE && (
-            <button onClick={() => setPage((prev) => prev + 1)}>
-              Next →
-            </button>
+            <button onClick={() => setPage((prev) => prev + 1)}>Next →</button>
           )}
         </div>
       )}

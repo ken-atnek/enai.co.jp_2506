@@ -5,7 +5,7 @@
  * ======================================= */
 
 import { Suspense } from 'react';
-import NewsDetailClient from './NewsDetailClient';
+import NewsDetailClient from '@/app/news/detail/NewsDetailClient';
 
 export default function BlogDetailPageWrapper() {
   return (
