@@ -21,7 +21,7 @@ const NewsList = ({ items }: Props) => {
           <div className={styles.date}>{item.date}</div>
           <h3>{item.title}</h3>
           <p className={styles.excerpt}>{item.body.excerpt}</p>
-          <Link href={`/news/${item.id}`} className={styles.readMore}>
+          <Link href={`/news/detail?id=${item.id}`} className={styles.readMore}>
             <span>続きを読む</span>
           </Link>
         </li>

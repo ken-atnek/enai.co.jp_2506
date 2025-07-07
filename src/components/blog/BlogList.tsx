@@ -19,16 +19,18 @@ const BlogList = ({ items }: Props) => {
     <ul className={styles.newsList}>
       {items.map((item) => (
         <li key={item.id} className={styles.newsItem}>
-          <Link href={`/blog/${item.id}`}>
+          <Link href={`/blog/detail?id=${item.id}`}>
             <Image
-              src={item.body.firstImage}
+              src={item.firstImage || '/images/no-image.webp'} // デフォルト画像を設定
+              width={300}
+              height={200}
               alt={item.title}
               className={styles.thumbnail}
             />
           </Link>
           <h3>{item.title}</h3>
           <p className={styles.excerpt}>{item.body.excerpt}</p>
-          <Link href={`/blog/${item.id}`} className={styles.readMore}>
+          <Link href={`/blog/detail?id=${item.id}`} className={styles.readMore}>
             <span>続きを読む</span>
           </Link>
         </li>
