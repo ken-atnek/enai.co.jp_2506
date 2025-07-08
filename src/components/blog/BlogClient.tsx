@@ -1,66 +1,47 @@
 'use client';
 /* =======================================
- * ニュースデータ取得コンポーネント
- * 動的にAPIからデータを取得して NewsList に渡す
- * URL: src/components/news/NewsClient.tsx
+ * ブログデータ取得コンポーネント
+ * 動的にAPIからデータを取得して BlogList に渡す
+ * URL: src/components/blog/BlogClient.tsx
  * Created: 2025-06-28
  * ======================================= */
-
 import { useEffect, useState } from 'react';
-import BlogList from '@/components/blog/BlogList';
+import { fetchBlogs } from '@/lib/fetchBlogApi';
 import type { BlogItem } from '@/types/blog';
-
-type ApiBlogItem = {
-  k_id: number | string;
-  k_date?: string;
-  k_title: string;
-  k_body: string;
-  k_img?: string;
-  k_total: number | string;
-};
-
+import BlogList from '@/components/blog/BlogList';
 //APIから取得するデータの件数
-const PER_PAGE = 6;
-
+const PER_PAGE = 9;
+//ブログ一覧を表示するコンポーネント
 export default function BlogClient() {
   const [items, setItems] = useState<BlogItem[]>([]);
-  //現在のページ（0スタート）
   const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [error, setError] = useState<string | null>(null);
   const fetchData = (page: number) => {
     const offset = page * PER_PAGE;
-    fetch(
-      `https://demo-enai.tuna-pic.co.jp/api/blog/index.php?limit=${PER_PAGE}&offset=${offset}`
-    )
-      .then((res) => {
-        if (!res.ok) throw new Error('API接続エラー');
-        return res.json();
-      })
-      .then((data: ApiBlogItem[]) => {
-        const converted: BlogItem[] = data.map((item: ApiBlogItem) => ({
-          id: String(item.k_id),
-          date: item.k_date || '',
-          title: item.k_title,
-          body: {
-            excerpt: '',
-            content: <div dangerouslySetInnerHTML={{ __html: item.k_body }} />,
-          },
-          // firstImage: item.k_first_image ? (item.k_first_image as StaticImageData) : null, // 画像URLがある場合は設定
-          firstImage: item.k_img ? item.k_img : '', // 画像URLがある場合は設定
-        }));
-        setItems(converted);
+    fetchBlogs(PER_PAGE, offset)
+      .then(({ blogs, total }) => {
+        setItems(blogs);
+        setTotal(total);
       })
       .catch((err) => {
         console.error('API取得失敗:', err);
+        setError('ブログデータの取得に失敗しました');
       });
   };
   useEffect(() => {
     fetchData(page);
   }, [page]);
+  // エラーハンドリング
+  if (error) return <p>{error}</p>;
+  if (!items.length) return <p>読み込み中...</p>;
+  //最終ページの判定
+  const isLastPage = (page + 1) * PER_PAGE >= total;
   return (
     <>
-      <BlogList items={items} />
+      <BlogList items={items} showBody={true} />
       {/* ページャーが必要なときだけ表示 */}
-      {(page > 0 || items.length === PER_PAGE) && (
+      {(page > 0 || !isLastPage) && (
         <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
           {/* Backボタンは1ページ目では表示しない */}
           {page > 0 && (
@@ -69,7 +50,7 @@ export default function BlogClient() {
             </button>
           )}
           {/* Nextボタンは最終ページで非表示 */}
-          {items.length === PER_PAGE && (
+          {!isLastPage && (
             <button onClick={() => setPage((prev) => prev + 1)}>Next →</button>
           )}
         </div>
