@@ -9,12 +9,14 @@ import { BlogItem } from '@/types/blog';
 import styles from '@/styles/PageBlog.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
+import { stripHtmlExceptBr } from '@/lib/stripHtml';
 
 type Props = {
   items: BlogItem[];
+  showBody?: boolean;
 };
 
-const BlogList = ({ items }: Props) => {
+const BlogList = ({ items, showBody = false }: Props) => {
   return (
     <ul className={styles.newsList}>
       {items.map((item) => (
@@ -29,7 +31,9 @@ const BlogList = ({ items }: Props) => {
             />
           </Link>
           <h3>{item.title}</h3>
-          <p className={styles.excerpt}>{item.body.excerpt}</p>
+          {showBody && (
+            <p className={styles.excerpt}>{stripHtmlExceptBr(item.body.content)}</p>
+          )}
           <Link href={`/blog/detail?id=${item.id}`} className={styles.readMore}>
             <span>続きを読む</span>
           </Link>

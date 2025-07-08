@@ -5,63 +5,43 @@
  * URL: src/components/news/NewsClient.tsx
  * Created: 2025-06-28
  * ======================================= */
-
 import { useEffect, useState } from 'react';
-import NewsList from '@/components/news/NewsList';
+import { fetchNews } from '@/lib/fetchNewsApi';
 import type { NewsItem } from '@/types/news';
-
-type ApiNewsItem = {
-  k_id: number | string;
-  k_date?: string;
-  k_title: string;
-  k_body: string;
-};
-
+import NewsList from '@/components/news/NewsList';
 //APIから取得するデータの件数
 const PER_PAGE = 5;
-
+//ブログ一覧を表示するコンポーネント
 export default function NewsClient() {
   const [items, setItems] = useState<NewsItem[]>([]);
-  //現在のページ（0スタート）
   const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [error, setError] = useState<string | null>(null);
   const fetchData = (page: number) => {
     const offset = page * PER_PAGE;
-    fetch(
-      `https://demo-enai.tuna-pic.co.jp/api/news/?limit=${PER_PAGE}&offset=${offset}`
-    )
-      .then((res) => {
-        if (!res.ok) throw new Error('API接続エラー');
-        return res.json();
-      })
-      .then((data: ApiNewsItem[]) => {
-        const converted: NewsItem[] = data.map((item: ApiNewsItem) => ({
-          id: String(item.k_id),
-          date: item.k_date || '',
-          title: item.k_title,
-          body: {
-            excerpt: '',
-            content: (
-              <div
-                className="newsContent"
-                dangerouslySetInnerHTML={{ __html: item.k_body }}
-              />
-            ),
-          },
-        }));
-        setItems(converted);
+    fetchNews(PER_PAGE, offset)
+      .then(({ news, total }) => {
+        setItems(news);
+        setTotal(total);
       })
       .catch((err) => {
         console.error('API取得失敗:', err);
+        setError('ニュースデータの取得に失敗しました');
       });
   };
   useEffect(() => {
     fetchData(page);
   }, [page]);
+  // エラーハンドリング
+  if (error) return <p>{error}</p>;
+  if (!items.length) return <p>読み込み中...</p>;
+  //最終ページの判定
+  const isLastPage = (page + 1) * PER_PAGE >= total;
   return (
     <>
       <NewsList items={items} />
       {/* ページャーが必要なときだけ表示 */}
-      {(page > 0 || items.length === PER_PAGE) && (
+      {(page > 0 || !isLastPage) && (
         <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
           {/* Backボタンは1ページ目では表示しない */}
           {page > 0 && (
@@ -70,7 +50,7 @@ export default function NewsClient() {
             </button>
           )}
           {/* Nextボタンは最終ページで非表示 */}
-          {items.length === PER_PAGE && (
+          {!isLastPage && (
             <button onClick={() => setPage((prev) => prev + 1)}>Next →</button>
           )}
         </div>
