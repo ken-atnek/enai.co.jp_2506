@@ -1,8 +1,11 @@
 @use "variable" as *;
 @use "svg" as *;
-
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
+// このファイル全体のルールを無効にする
 /* =================================
-** ブログリストレイアウト
+** NEWSリストレイアウト
 ------------------------------ */
 .newsList {
     position: relative;
@@ -10,6 +13,9 @@
     display: grid;
     grid-auto-flow: row;
     gap: 2em 0;
+    @include sp {
+        gap: 4vw 0;
+    }
     li {
         border: double 4px #81664b;
         display: grid;
@@ -18,11 +24,17 @@
         font-size: inherit;
         gap: 0.5em 0;
         padding: 2em 2em 1em;
+        @include sp {
+            padding: 4vw 2vw;
+        }
         .date {
             justify-self: end;
             font-size: FZ(16);
             font-weight: 500;
             letter-spacing: 0.05em;
+            @include sp {
+                font-size: FZ(12);
+            }
         }
         h3 {
             font-size: FZ(22);
@@ -30,6 +42,10 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-align: justify;
+            @include sp {
+                font-size: FZ(16);
+                line-height: 1.4em;
+            }
         }
         .excerpt {
             text-align: justify;
@@ -41,6 +57,9 @@
             -webkit-line-clamp: 2;
             overflow: hidden;
             margin-top: 0.5em;
+            @include sp {
+                font-size: FZ(14);
+            }
         }
         .readMore {
             justify-self: end;
@@ -53,6 +72,9 @@
                 &::after {
                     content: ">";
                     margin-left: 0.5em;
+                }
+                @include sp {
+                    font-size: FZ(14);
                 }
             }
             @include hover {
@@ -70,6 +92,9 @@
     flex-direction: column;
     align-items: center;
     padding: 5em 2em;
+    @include sp {
+        padding: 6vw 4vw 16vw;
+    }
     article {
         max-width: $articleMaxWidth;
     }
@@ -85,6 +110,9 @@
     font-size: inherit;
     background-color: $light-brown;
     padding: 1em 2em 5em;
+    @include sp {
+        padding: 6vw 4vw 6vw;
+    }
     article {
         display: flex;
         flex-direction: column;
@@ -124,6 +152,10 @@
             font-size: FZ(36);
             font-weight: 600;
             letter-spacing: 0.08em;
+            @include sp {
+                font-size: FZ(26);
+                margin-top: 10vw;
+            }
         }
     }
 }
@@ -133,6 +165,9 @@
     align-items: center;
     padding: 5em 2em 8em;
     gap: 5em 0;
+    @include sp {
+        padding: 6vw 4vw 6vw;
+    }
     article {
         max-width: 90rem;
         display: flex;

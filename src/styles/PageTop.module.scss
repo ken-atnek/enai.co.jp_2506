@@ -230,7 +230,7 @@
     align-items: center;
     padding: 5em 2em;
     @include sp {
-        padding: 6vw 4vw;
+        padding: 6vw 4vw 16vw;
     }
     article {
         max-width: $articleMaxWidth;
@@ -286,7 +286,7 @@
     align-items: center;
     padding: 5em 2em;
     @include sp {
-        padding: 6vw 4vw;
+        padding: 6vw 4vw 16vw;
     }
     article {
         max-width: $articleMaxWidth;
@@ -295,7 +295,8 @@
         align-items: center;
         gap: 4em 0;
         @include sp {
-            display: contents;
+            max-width: unset;
+            gap: 6vw 0;
         }
     }
 }
@@ -308,7 +309,7 @@
     align-items: center;
     padding: 5em 2em;
     @include sp {
-        padding: 6vw 4vw;
+        padding: 6vw 4vw 16vw;
     }
     article {
         max-width: $articleMaxWidth;
@@ -317,7 +318,8 @@
         align-items: center;
         gap: 4em 0;
         @include sp {
-            display: contents;
+            max-width: unset;
+            gap: 6vw 0;
         }
     }
 }

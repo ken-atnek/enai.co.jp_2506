@@ -1,6 +1,9 @@
 @use "variable" as *;
 @use "svg" as *;
-
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
+// このファイル全体のルールを無効にする
 /* =================================
 ** ブログリストレイアウト
 ------------------------------ */
@@ -11,7 +14,12 @@
     gap: 2em 2em;
     display: grid;
     grid-template-rows: auto auto auto auto;
-
+    @include sp {
+        display: flex;
+        flex-direction: column;
+        grid-template-rows: unset;
+        width: 100%;
+    }
     li {
         border: double 4px #81664b;
         display: grid;
@@ -20,9 +28,16 @@
         font-size: inherit;
         gap: 1em 0;
         padding: 3em 2em 2em;
+        @include sp {
+            grid-row: unset;
+            grid-auto-flow: row;
+            gap: 2vw 0;
+            padding: 4vw;
+        }
         .thumbnail {
             aspect-ratio: 1.5;
             object-fit: cover;
+            width: 100%;
         }
         h3 {
             font-size: FZ(18);
@@ -30,6 +45,8 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-align: justify;
+            display: flex;
+            justify-content: center;
         }
         .excerpt {
             text-align: justify;
@@ -116,6 +133,9 @@
     flex-direction: column;
     align-items: center;
     padding: 5em 2em;
+    @include sp {
+        padding: 6vw 4vw 16vw;
+    }
     article {
         max-width: $articleMaxWidth;
     }
@@ -131,6 +151,9 @@
     font-size: inherit;
     background-color: $light-brown;
     padding: 1em 2em 5em;
+    @include sp {
+        padding: 6vw 4vw 6vw;
+    }
     article {
         display: flex;
         flex-direction: column;
@@ -170,6 +193,10 @@
             font-size: FZ(36);
             font-weight: 600;
             letter-spacing: 0.08em;
+            @include sp {
+                font-size: FZ(30);
+                margin-top: 10vw;
+            }
         }
     }
 }
@@ -179,6 +206,9 @@
     align-items: center;
     padding: 5em 2em 8em;
     gap: 5em 0;
+    @include sp {
+        padding: 6vw 4vw 6vw;
+    }
     article {
         max-width: 84rem;
         display: flex;

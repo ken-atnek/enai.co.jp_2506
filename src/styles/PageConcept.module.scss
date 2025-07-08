@@ -1,8 +1,9 @@
 @use "variable" as *;
 @use "svg" as *;
 /* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
-
 /* =================================
 ** いにしえ通所介護事業所
 ------------------------------ */
@@ -12,11 +13,17 @@
     flex-direction: column;
     align-items: center;
     padding: 2em 2em 3em;
+    @include sp {
+        padding: 4vw 4vw 6vw;
+    }
     h3 {
         font-size: FZ(26);
         font-weight: 600;
         color: $base-brown;
         letter-spacing: 0.04em;
+        @include sp {
+            font-size: FZ(22);
+        }
     }
     article {
         display: flex;
@@ -24,13 +31,22 @@
         align-items: center;
         max-width: $articleMaxWidth;
         padding: 5em 0;
+        @include sp {
+            padding: 6vw 0;
+        }
         .wrapLink {
             align-self: flex-end;
             font-size: inherit;
+            @include sp {
+                width: 100%;
+            }
         }
     }
     .block02 {
         gap: 2em 0;
+        @include sp {
+            gap: 4vw 0;
+        }
         p {
             letter-spacing: 0.08em;
             font-size: FZ(18);
@@ -44,6 +60,12 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2em 5em;
             font-size: inherit;
+            @include sp {
+                grid-template-columns: unset;
+                grid-auto-flow: row;
+                gap: 4vw;
+                padding-inline: 8vw;
+            }
             img {
                 width: 100%;
                 aspect-ratio: 9/7;
@@ -52,6 +74,9 @@
     }
     .block03 {
         gap: 1em 0;
+        @include sp {
+            gap: 4vw 0;
+        }
         p {
             letter-spacing: 0.08em;
             font-size: FZ(18);
@@ -68,6 +93,11 @@
             gap: 3em;
             margin-top: 2em;
             margin-bottom: 3em;
+            @include sp {
+                grid-template-columns: unset;
+                grid-auto-flow: row;
+                gap: 10vw 0;
+            }
             & > div {
                 position: relative;
                 font-size: inherit;
@@ -75,11 +105,17 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 0.5em 0;
+                @include sp {
+                    gap: 0;
+                }
                 h4 {
                     color: $base-brown;
                     font-size: FZ(20);
                     font-weight: 600;
                     margin-bottom: 1em;
+                    @include sp {
+                        margin-bottom: 4vw;
+                    }
                 }
                 span {
                     font-size: FZ(18);
@@ -92,6 +128,9 @@
     }
     .blockTextOnly {
         gap: 2em 0;
+        @include sp {
+            gap: 4vw 0;
+        }
         p {
             letter-spacing: 0.08em;
             font-size: FZ(18);

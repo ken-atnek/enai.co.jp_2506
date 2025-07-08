@@ -1,5 +1,12 @@
+/* =================================
+ * 	ページタイトル
+ * ------------------------------ */
 @use "variable" as *;
 @use "svg" as *;
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
+// このファイル全体のルールを無効にする
 .containerTitle {
     display: flex;
     flex-direction: column;
@@ -7,6 +14,9 @@
     font-size: inherit;
     background-color: $light-brown;
     padding: 1em 2em 4em;
+    @include sp {
+        padding: 4vw 4vw 6vw;
+    }
     article {
         display: flex;
         flex-direction: column;
@@ -46,6 +56,11 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             margin-top: 4em;
+            @include sp {
+                margin-top: 10vw;
+                font-size: FZ(24);
+                text-align: center;
+            }
         }
         h3 {
             font-size: FZ(18);

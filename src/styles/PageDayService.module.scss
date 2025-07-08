@@ -1,6 +1,8 @@
 @use "variable" as *;
 @use "svg" as *;
 /* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
 
 /* =================================
@@ -13,6 +15,9 @@
     font-size: inherit;
     background-color: $light-brown;
     padding: 1em 2em 5em;
+    @include sp {
+        padding: 4vw 4vw 6vw;
+    }
     article {
         display: flex;
         flex-direction: column;
@@ -53,6 +58,11 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             margin-top: 4em;
+            @include sp {
+                margin-top: 10vw;
+                font-size: FZ(24);
+                text-align: center;
+            }
         }
         h3 {
             font-size: FZ(18);
@@ -70,11 +80,17 @@
     flex-direction: column;
     align-items: center;
     padding: 2em 2em 3em;
+    @include sp {
+        padding: 4vw 4vw 6vw;
+    }
     h3 {
         font-size: FZ(26);
         font-weight: 600;
         color: $base-brown;
         letter-spacing: 0.04em;
+        @include sp {
+            font-size: FZ(22);
+        }
     }
     article {
         display: flex;
@@ -82,6 +98,9 @@
         align-items: center;
         max-width: $articleMaxWidth;
         padding: 5em 0;
+        @include sp {
+            padding: 6vw 0;
+        }
         .wrapLink {
             align-self: flex-end;
             font-size: inherit;
@@ -89,6 +108,9 @@
     }
     .block01 {
         gap: 3em 0;
+        @include sp {
+            gap: 6vw;
+        }
         p {
             letter-spacing: 0.08em;
             font-size: FZ(18);
@@ -98,6 +120,9 @@
         .boxContents {
             font-size: inherit;
             display: flex;
+            @include sp {
+                flex-direction: column;
+            }
             gap: 0 3em;
             p {
                 flex: 1;
@@ -127,11 +152,21 @@
                 padding-block: 1em;
                 gap: 0 8em;
                 border-bottom: solid 1px rgba(129, 102, 75, 0.1);
+                @include sp {
+                    display: flex;
+                    flex-direction: column;
+                    grid-template-columns: unset;
+                    align-items: flex-start;
+                    gap: 2vw 0;
+                }
                 dt {
                     color: $base-brown;
                     font-size: FZ(18);
                     font-weight: 600;
                     align-self: center;
+                    @include sp {
+                        align-self: flex-start;
+                    }
                 }
                 dd {
                     font-size: FZ(18);
@@ -156,6 +191,9 @@
     }
     .block02 {
         gap: 2em 0;
+        @include sp {
+            gap: 4vw 0;
+        }
         p {
             letter-spacing: 0.08em;
             font-size: FZ(18);
@@ -170,6 +208,13 @@
             gap: 0 6em;
             font-size: inherit;
             margin-top: 2em;
+            @include sp {
+                grid-template-columns: unset;
+                grid-auto-flow: row;
+                gap: 4vw 0;
+                padding-inline: 8vw;
+                margin-top: unset;
+            }
             img {
                 width: 100%;
                 aspect-ratio: 9/7;
@@ -178,6 +223,9 @@
     }
     .blockTextOnly {
         gap: 2em 0;
+        @include sp {
+            gap: 4vw 0;
+        }
         p {
             letter-spacing: 0.08em;
             font-size: FZ(18);
@@ -188,6 +236,9 @@
             align-self: flex-start;
             color: $base-pink;
             font-size: FZ(18);
+            @include sp {
+                font-size: FZ(16);
+            }
         }
     }
 }
