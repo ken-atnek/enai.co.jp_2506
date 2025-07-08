@@ -8,7 +8,7 @@
 * ======================================= */
 
 
-header("Access-Control-Allow-Origin: *"); // CORS対策
+// header("Access-Control-Allow-Origin: *"); // CORS対策
 header("Content-Type: application/json");
 
 // フォームデータを受け取る
@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	}
 
 	// 📩 **メールの設定**
-	// $to = "ken.atnek@gmail.com";
-	$to = "qun@kind.ocn.ne.jp";
-	$to_name = "九州運輸";
+	$to = "ken.atnek@gmail.com";
+	// $to = "rien@bronze.ocn.ne.jp";
+	$to_name = "合同会社縁合";
 	$send_date = date("Y/n/j-H:i", time());
 
 	// **エンコーディング設定**
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	mb_internal_encoding('UTF-8');
 
 	// **ヘッダー作成**
-	$header_from = 'From: "' . mb_encode_mimeheader($name, 'ISO-2022-JP') . '" <no-reply@qun-kumamoto.com>' . "\r\n";
+	$header_from = 'From: "' . mb_encode_mimeheader($name, 'ISO-2022-JP') . '" <no-reply@demo-enai.tuna-pic.co.jp>' . "\r\n";
 	$header_from .= 'Reply-To: ' . $email;
 
 	// **メール本文**
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$send_target = $to_name . ' <' . $to . '>';
 
 	// **送信**
-	$rslt = mb_send_mail($send_target, $subject, $mail_body, $header_from, "-fno-reply@qun-kumamoto.com");
+	$rslt = mb_send_mail($send_target, $subject, $mail_body, $header_from, "-fno-reply@demo-enai.tuna-pic.co.jpm");
 	// **エンコーディングを元に戻す**
 	mb_internal_encoding($orgEncoding);
 

@@ -44,9 +44,12 @@ export default function Contact() {
   // **確認ボタンの処理**
   const handleConfirm = (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
 
     if (!position || !lastName || !email || !phone || !qualification) {
       setStatus('必須項目を入力してください');
+      setIsModalOpen(true);
+      setTimeout(() => setIsModalOpen(false), 3000);
       return;
     }
 
@@ -88,10 +91,13 @@ export default function Contact() {
     formData.append('addressDetail', addressDetail);
 
     try {
-      const response = await fetch('/backend/contact.php', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await fetch(
+        'https://demo-enai.tuna-pic.co.jp/backend/contact.php',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
 
       const result = await response.json();
       // console.log('サーバーレスポンス:', result);
@@ -154,33 +160,71 @@ export default function Contact() {
         </article>
         <form
           className={styles.blockForm}
+          noValidate
+          action=""
           onSubmit={isConfirming ? handleSubmit : handleConfirm}
         >
           {isConfirming ? (
             // ✅ 確認画面
             <div className={styles.statusConfirm}>
               <p>入力内容を確認してください。</p>
-              <div>{`${lastName} ${firstName}`}</div>
-              <div>{`${lastKana} ${firstKana}`}</div>
-              <div>{positionLabelMap[position] || position}</div>
-              <div>{positionDetail}</div>
-              <div>{email}</div>
-              {/* 住所の各フィールド */}
-              <div>{zipCode}</div>
-              <div>{prefecture}</div>
-              <div>{city}</div>
-              <div>{addressDetail}</div>
-              <div>{phone}</div>
-              <div>{qualification}</div>
-              <div>{education}</div>
-              <div>{experience}</div>
-              <div>{desiredChangeDate}</div>
-              <div>{employmentStatus}</div>
-              <div>{gender}</div>
-              <div>{age}</div>
-              <div>{remarks}</div>
-              <div>{motivation}</div>
-              <div>{selfPR}</div>
+              <ul>
+                <li>
+                  <div>{`${lastName} ${firstName}`}</div>
+                  <span>{`${lastKana} ${firstKana}`}</span>
+                </li>
+                <li>
+                  <div>{gender}</div>
+                </li>
+                <li>
+                  <h3>年齢（応募時点）</h3>
+                  {age}
+                </li>
+                <li>{positionLabelMap[position] || position}</li>
+                <li>{positionDetail}</li>
+                <li>
+                  <div>
+                    <i>{zipCode}</i>
+                  </div>
+                  <div>{prefecture}</div>
+                  <div>{city}</div>
+                </li>
+                <li>{addressDetail}</li>
+                <li>{phone}</li>
+                <li>{email}</li>
+                <li>
+                  <h3>就業</h3>
+                  <div>{employmentStatus}</div>
+                </li>
+                <li>
+                  <h3>転職希望時期</h3>
+                  <div>{desiredChangeDate}</div>
+                </li>
+                <li>
+                  <h3>資格</h3>
+                  <div>{qualification}</div>
+                </li>
+                <li>
+                  <h3>最終学歴</h3>
+                  <div>{education}</div>
+                </li>
+                <li>
+                  <h3>職務経歴</h3>
+                  <div>{experience}</div>
+                </li>
+                <li>
+                  <h3>志望動機</h3>
+                  <div>{motivation}</div>
+                </li>
+                <li>
+                  <h3>自己PR</h3>
+                  <div>{selfPR}</div>
+                </li>
+                <li>
+                  <h3>希望条件やご質問</h3>
+                  <div>{remarks}</div>
+                </li>
+              </ul>
 
               <div className={styles.box_btn}>
                 <button type="button" onClick={handleEdit}>
@@ -201,8 +245,8 @@ export default function Contact() {
                     <input
                       type="radio"
                       name="position"
-                      value="newgraduate"
-                      checked={position === 'newgraduate'}
+                      value="新卒・第二新卒"
+                      checked={position === '新卒・第二新卒'}
                       onChange={(e) => setPosition(e.target.value)}
                     />
                     <span>新卒・第二新卒</span>
@@ -211,23 +255,23 @@ export default function Contact() {
                     <input
                       type="radio"
                       name="position"
-                      value="career"
-                      checked={position === 'career'}
+                      value="中途採用"
+                      checked={position === '中途採用'}
                       onChange={(e) => setPosition(e.target.value)}
                     />
                     <span>中途採用</span>
                   </label>
                 </dd>
               </dl>
-              <dl>
+              <dl className={styles.formJpbType}>
                 <dt className={styles.formRequired}>応募職種</dt>
                 <dd className={styles.checkRadio}>
                   <label>
                     <input
                       type="radio"
                       name="positionDetail"
-                      value="careworker"
-                      checked={positionDetail === 'careworker'}
+                      value="介護職員"
+                      checked={positionDetail === '介護職員'}
                       onChange={(e) => setPositionDetail(e.target.value)}
                     />
                     <span>介護職員</span>
@@ -236,8 +280,8 @@ export default function Contact() {
                     <input
                       type="radio"
                       name="positionDetail"
-                      value="nurse"
-                      checked={positionDetail === 'nurse'}
+                      value="看護師（正・准）"
+                      checked={positionDetail === '看護師（正・准）'}
                       onChange={(e) => setPositionDetail(e.target.value)}
                     />
                     <span>看護師（正・准）</span>
@@ -246,8 +290,8 @@ export default function Contact() {
                     <input
                       type="radio"
                       name="positionDetail"
-                      value="visiting"
-                      checked={positionDetail === 'visiting'}
+                      value="訪問看護"
+                      checked={positionDetail === '訪問看護'}
                       onChange={(e) => setPositionDetail(e.target.value)}
                     />
                     <span>訪問看護</span>
@@ -256,8 +300,8 @@ export default function Contact() {
                     <input
                       type="radio"
                       name="positionDetail"
-                      value="dayservice"
-                      checked={positionDetail === 'dayservice'}
+                      value="デイサービス"
+                      checked={positionDetail === 'デイサービス'}
                       onChange={(e) => setPositionDetail(e.target.value)}
                     />
                     <span>デイサービス</span>
@@ -514,7 +558,7 @@ export default function Contact() {
         {/* ✅ モーダル表示 */}
         {isModalOpen && (
           <Modal
-            message="お問い合わせが送信されました。"
+            message={status || 'お問い合わせが送信されました。'}
             onClose={() => setIsModalOpen(false)}
           />
         )}

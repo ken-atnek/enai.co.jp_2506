@@ -1,18 +1,22 @@
 @use "variable" as *;
 @use "svg" as *;
 @use "mixin" as *;
-
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
+// このファイル全体のルールを無効にする
 .contactForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 3em 2em;
+    z-index: 6;
     @include sp {
         padding: 6vw 4vw;
     }
     article {
         max-width: 87rem;
-        border-bottom: 1px solid rgb(204, 204, 204);
+        border-bottom: 1px solid rgb(204 204 204);
         color: #555;
         display: flex;
         flex-direction: column;
@@ -35,9 +39,11 @@
     font-size: inherit;
     width: stretch;
     max-width: 87rem;
+    z-index: 7;
     @include sp {
         max-width: unset;
     }
+
     // inputタグ初期化
     input {
         margin: 0;
@@ -64,8 +70,8 @@
         padding: 1em 0.8em;
         border-radius: 0.4rem;
         letter-spacing: 0.04em;
-        background-color: #ffffff;
-        border: 1px solid rgb(204, 204, 204);
+        background-color: #fff;
+        border: 1px solid rgb(204 204 204);
         @include sp {
             padding: 1em;
         }
@@ -143,6 +149,25 @@
             dd {
                 position: relative;
                 font-size: inherit;
+                label {
+                    @include sp {
+                        span {
+                            font-size: 1.8rem;
+                        }
+                    }
+                }
+            }
+            &.formJpbType {
+                dd {
+                    @include sp {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4vw 0;
+                        label {
+                            font-size: 1.8rem;
+                        }
+                    }
+                }
             }
             &.formName {
                 dd {
@@ -150,6 +175,9 @@
                     font-size: inherit;
                     grid-template-columns: auto 1fr 1fr;
                     gap: 1em 0;
+                    @include sp {
+                        grid-template-columns: 1fr 1fr;
+                    }
                     & > div {
                         grid-column: span 3;
                         font-size: inherit;
@@ -164,6 +192,11 @@
                             font-size: FZ(12);
                             @include sp {
                                 grid-column: span 2;
+                            }
+                        }
+                        input[type="text"] {
+                            @include sp {
+                                width: 100%;
                             }
                         }
                     }
@@ -253,8 +286,8 @@
                         top: 50%;
                         left: 0;
                         transform: translate(4px, -50%);
-                        width: 0.7em;
-                        height: 0.7em;
+                        width: 0.8em;
+                        height: 0.8em;
                         background-color: $base-black;
                         opacity: 0;
                         border-radius: 50%;
@@ -272,7 +305,42 @@
             }
         }
         &.statusConfirm {
-            gap: 3em 0;
+            gap: 1em 0;
+            display: flex;
+            flex-direction: column;
+            ul {
+                position: relative;
+                font-size: inherit;
+                display: flex;
+                flex-direction: column;
+                li {
+                    font-size: inherit;
+                    padding-block: 0.85em;
+                    display: flex;
+                    align-items: center;
+                    padding-inline: 1em;
+                    gap: 0 1em;
+                    &:nth-of-type(2n) {
+                        background-color: #efefef;
+                    }
+                    h3 {
+                        font-size: FZ(14);
+                        color: #858585;
+                    }
+                    div {
+                        font-size: FZ(16);
+                    }
+                    span {
+                        font-size: 0.9em;
+                        &::before {
+                            content: "（";
+                        }
+                        &::after {
+                            content: "）";
+                        }
+                    }
+                }
+            }
         }
         .box_btn {
             margin-top: 2rem;
@@ -301,7 +369,6 @@
                 @include sp {
                     height: 12vw;
                 }
-
                 @include hover {
                     background-color: #011e49;
                     color: #fff;

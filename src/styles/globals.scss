@@ -49,6 +49,10 @@ footer {
     border-radius: 100vmax;
     padding: 1em;
     transition: 0.3s ease-out;
+    @include sp {
+        width: 100%;
+        justify-content: center;
+    }
     span {
         position: relative;
         font-size: FZ(18);

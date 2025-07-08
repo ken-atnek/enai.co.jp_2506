@@ -7,7 +7,6 @@
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
-
 .boxH2 {
     position: relative;
     display: flex;
@@ -53,6 +52,7 @@
         color: #fff;
     }
 }
+
 /* =================================
 ** フェード画像
 ------------------------------ */
@@ -230,7 +230,7 @@
     align-items: center;
     padding: 5em 2em;
     @include sp {
-        padding: 6vw 4vw;
+        padding: 6vw 4vw 16vw;
     }
     article {
         max-width: $articleMaxWidth;
@@ -277,6 +277,7 @@
         }
     }
 }
+
 /* =================================
 ** お知らせ・更新情報
 ------------------------------ */
@@ -286,7 +287,7 @@
     align-items: center;
     padding: 5em 2em;
     @include sp {
-        padding: 6vw 4vw;
+        padding: 6vw 4vw 16vw;
     }
     article {
         max-width: $articleMaxWidth;
@@ -295,10 +296,12 @@
         align-items: center;
         gap: 4em 0;
         @include sp {
-            display: contents;
+            max-width: unset;
+            gap: 6vw 0;
         }
     }
 }
+
 /* =================================
 ** BLOG
 ------------------------------ */
@@ -308,7 +311,7 @@
     align-items: center;
     padding: 5em 2em;
     @include sp {
-        padding: 6vw 4vw;
+        padding: 6vw 4vw 16vw;
     }
     article {
         max-width: $articleMaxWidth;
@@ -317,10 +320,12 @@
         align-items: center;
         gap: 4em 0;
         @include sp {
-            display: contents;
+            max-width: unset;
+            gap: 6vw 0;
         }
     }
 }
+
 /* =================================
 ** ページNAV
 ------------------------------ */
@@ -355,7 +360,7 @@
             li {
                 position: relative;
                 font-size: inherit;
-                border: solid 1px rgba(242, 190, 101, 0.4);
+                border: solid 1px rgb(242 190 101 / 40%);
                 padding: 2em;
                 display: flex;
                 flex-direction: column;
@@ -374,8 +379,8 @@
                     height: 5px;
                     display: block;
                     position: absolute;
-                    top: 0px;
-                    left: 0px;
+                    top: 0;
+                    left: 0;
                 }
                 h3 {
                     font-size: FZ(22);
@@ -425,13 +430,13 @@
                 }
                 .pcImage {
                     display: block;
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         display: none;
                     }
                 }
                 .spImage {
                     display: none;
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         display: block;
                     }
                 }
