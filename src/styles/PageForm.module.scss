@@ -5,7 +5,6 @@
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
-
 .contactForm {
     display: flex;
     flex-direction: column;
@@ -17,7 +16,7 @@
     }
     article {
         max-width: 87rem;
-        border-bottom: 1px solid rgb(204, 204, 204);
+        border-bottom: 1px solid rgb(204 204 204);
         color: #555;
         display: flex;
         flex-direction: column;
@@ -44,6 +43,7 @@
     @include sp {
         max-width: unset;
     }
+
     // inputタグ初期化
     input {
         margin: 0;
@@ -70,8 +70,8 @@
         padding: 1em 0.8em;
         border-radius: 0.4rem;
         letter-spacing: 0.04em;
-        background-color: #ffffff;
-        border: 1px solid rgb(204, 204, 204);
+        background-color: #fff;
+        border: 1px solid rgb(204 204 204);
         @include sp {
             padding: 1em;
         }
@@ -126,7 +126,6 @@
                     max-width: unset;
                 }
             }
-
             textarea {
                 min-height: 11lh;
                 field-sizing: content;
@@ -370,7 +369,6 @@
                 @include sp {
                     height: 12vw;
                 }
-
                 @include hover {
                     background-color: #011e49;
                     color: #fff;

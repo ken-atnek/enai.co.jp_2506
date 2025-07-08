@@ -3,6 +3,7 @@
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-pattern */
+
 /* =================================
 ** 料金・サービス
 ------------------------------ */
@@ -34,6 +35,7 @@
             padding: 6vw 0;
         }
     }
+
     // 「住宅型有料老人ホーム」とは
     .block01 {
         gap: 2em 0;
@@ -56,6 +58,7 @@
             }
         }
     }
+
     // 利用対象者
     .block02 {
         gap: 2em 0;
@@ -68,7 +71,7 @@
             li {
                 font-size: FZ(18);
                 letter-spacing: 0.04em;
-                border-bottom: solid 1px rgba(129, 102, 75, 0.5);
+                border-bottom: solid 1px rgb(129 102 75 / 50%);
                 padding-block: 0.5em;
                 @include sp {
                     font-size: FZ(16);
@@ -76,6 +79,7 @@
             }
         }
     }
+
     // 運営について
     .block03 {
         gap: 2em 0;
@@ -103,7 +107,7 @@
                 grid-template-columns: subgrid;
                 padding-block: 1em;
                 gap: 0 8em;
-                border-bottom: solid 1px rgba(129, 102, 75, 0.1);
+                border-bottom: solid 1px rgb(129 102 75 / 10%);
                 @include sp {
                     display: flex;
                     flex-direction: column;
@@ -136,10 +140,10 @@
                     }
                 }
                 &:first-of-type {
-                    border-top: solid 1px rgba(129, 102, 75, 0.1);
+                    border-top: solid 1px rgb(129 102 75 / 10%);
                 }
                 &:nth-of-type(2n) {
-                    background-color: rgba(129, 102, 75, 0.02);
+                    background-color: rgb(129 102 75 / 2%);
                 }
             }
             p {

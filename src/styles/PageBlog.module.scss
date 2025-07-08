@@ -4,6 +4,7 @@
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
+
 /* =================================
 ** ブログリストレイアウト
 ------------------------------ */
@@ -11,7 +12,7 @@
     position: relative;
     grid-template-columns: repeat(3, 1fr);
     font-size: inherit;
-    gap: 2em 2em;
+    gap: 2em;
     display: grid;
     grid-template-rows: auto auto auto auto;
     @include sp {
@@ -125,6 +126,7 @@
         }
     }
 }
+
 /* =================================
 ** ブログページトップ
 ------------------------------ */
@@ -152,7 +154,7 @@
     background-color: $light-brown;
     padding: 1em 2em 5em;
     @include sp {
-        padding: 6vw 4vw 6vw;
+        padding: 6vw 4vw;
     }
     article {
         display: flex;
@@ -207,7 +209,7 @@
     padding: 5em 2em 8em;
     gap: 5em 0;
     @include sp {
-        padding: 6vw 4vw 6vw;
+        padding: 6vw 4vw;
     }
     article {
         max-width: 84rem;

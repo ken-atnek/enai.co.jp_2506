@@ -15,7 +15,7 @@
     align-items: center;
     padding: 2em 2em 3em;
     @include sp {
-        padding: 4vw 4vw 4vw;
+        padding: 4vw;
     }
     .boxDetailsList {
         position: relative;
@@ -31,7 +31,7 @@
             grid-template-columns: subgrid;
             padding-block: 0.8em;
             gap: 0 8em;
-            border-bottom: solid 1px rgba(129, 102, 75, 0.1);
+            border-bottom: solid 1px rgb(129 102 75 / 10%);
             @include sp {
                 grid-template-columns: unset;
                 grid-auto-flow: row;
@@ -54,10 +54,10 @@
                 }
             }
             &:first-of-type {
-                border-top: solid 1px rgba(129, 102, 75, 0.1);
+                border-top: solid 1px rgb(129 102 75 / 10%);
             }
             &:nth-of-type(2n) {
-                background-color: rgba(129, 102, 75, 0.02);
+                background-color: rgb(129 102 75 / 2%);
             }
         }
     }
