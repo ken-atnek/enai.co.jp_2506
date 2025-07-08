@@ -3,14 +3,17 @@
  * ブログデータ取得コンポーネント
  * 動的にAPIからデータを取得して BlogList に渡す
  * URL: src/components/blog/BlogClient.tsx
+ * Referenced in:src/app/blog/page.tsx
  * Created: 2025-06-28
+ * Last updated: 2025-07-08
  * ======================================= */
 import { useEffect, useState } from 'react';
 import { fetchBlogs } from '@/lib/fetchBlogApi';
 import type { BlogItem } from '@/types/blog';
 import BlogList from '@/components/blog/BlogList';
+import styles from '@/styles/PageBlog.module.scss';
 //APIから取得するデータの件数
-const PER_PAGE = 9;
+const PER_PAGE = 3;
 //ブログ一覧を表示するコンポーネント
 export default function BlogClient() {
   const [items, setItems] = useState<BlogItem[]>([]);
@@ -42,16 +45,26 @@ export default function BlogClient() {
       <BlogList items={items} showBody={true} />
       {/* ページャーが必要なときだけ表示 */}
       {(page > 0 || !isLastPage) && (
-        <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+        <div className={styles.wrapPager}>
           {/* Backボタンは1ページ目では表示しない */}
           {page > 0 && (
-            <button onClick={() => setPage((prev) => Math.max(prev - 1, 0))}>
-              ← Back
+            <button
+              className={styles.prev}
+              type="button"
+              onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
+            >
+              Back
             </button>
           )}
           {/* Nextボタンは最終ページで非表示 */}
           {!isLastPage && (
-            <button onClick={() => setPage((prev) => prev + 1)}>Next →</button>
+            <button
+              className={styles.next}
+              type="button"
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              Next
+            </button>
           )}
         </div>
       )}

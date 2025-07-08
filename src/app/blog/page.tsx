@@ -1,11 +1,9 @@
 /* =======================================
- * ブログページ
+ * 梨園 ブログページ
  * URL: src/app/blog/page.tsx
  * Created: 2025-06-14
- * Last updated: 2025-06-14
+ * Last updated: 2025-07-08
  * ======================================= */
-// import BlogList from '@/components/blog/BlogList';
-// import { blogData } from '@/data/blogData';
 import BlogClient from '@/components/blog/BlogClient';
 import PageTitle from '@/components/common/PageTitle';
 import styles from '@/styles/PageBlog.module.scss';
@@ -23,7 +21,6 @@ export default function BlogPage() {
       <PageTitle title="梨園のブログ" titleEn="OFFICIAL BLOG" />
       <section className={styles.containerBlogList}>
         <article>
-          {/* <BlogList items={blogData} /> */}
           <BlogClient />
         </article>
       </section>
