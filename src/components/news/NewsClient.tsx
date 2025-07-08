@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { fetchNews } from '@/lib/fetchNewsApi';
 import type { NewsItem } from '@/types/news';
 import NewsList from '@/components/news/NewsList';
+import styles from '@/styles/PageNews.module.scss';
 //APIから取得するデータの件数
 const PER_PAGE = 5;
 //ブログ一覧を表示するコンポーネント
@@ -42,16 +43,26 @@ export default function NewsClient() {
       <NewsList items={items} />
       {/* ページャーが必要なときだけ表示 */}
       {(page > 0 || !isLastPage) && (
-        <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+        <div className={styles.wrapPager}>
           {/* Backボタンは1ページ目では表示しない */}
           {page > 0 && (
-            <button onClick={() => setPage((prev) => Math.max(prev - 1, 0))}>
-              ← Back
+            <button
+              className={styles.prev}
+              type="button"
+              onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
+            >
+              Back
             </button>
           )}
           {/* Nextボタンは最終ページで非表示 */}
           {!isLastPage && (
-            <button onClick={() => setPage((prev) => prev + 1)}>Next →</button>
+            <button
+              className={styles.next}
+              type="button"
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              Next
+            </button>
           )}
         </div>
       )}
