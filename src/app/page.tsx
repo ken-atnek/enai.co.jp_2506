@@ -1,21 +1,14 @@
 /* =======================================
- * TOPページ
- * URL: /app/page.tsx
+ * 梨園 TOP
+ * URL: src/app/page.tsx
  * Created: 2025-06-13
- * Last updated: 2025-06-13
+ * Last updated: 2025-07-08
  * ======================================= */
 import ContainerFadeImage from '@/components/top/ContainerFadeImage';
 import styles from '@/styles/PageTop.module.scss';
 import { navMenu } from '@/data/navMenuData';
-
-// import NewsList from '@/components/news/NewsList';
-// import { newsData } from '@/data/newsData';
-// import BlogList from '@/components/blog/BlogList';
-// import { blogData } from '@/data/blogData';
-
 import TopNewsClient from '@/components/top/TopNewsClient';
 import TopBlogClient from '@/components/top/TopBlogClient';
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ContainerPageNav from '@/components/top/ContainerPageNav';
@@ -46,7 +39,7 @@ export default function Home() {
           ))}
         </nav>
         <article>
-          <h2>「その人らしさ」を目指して―</h2>
+          <h2>「その人らしさ」を目指して</h2>
           <p>
             私たちは、高齢者の方にも、障害を持つすべての人たちが可能な限り地域でくらしていける共生社会の実現を目指します。いつまでも心豊かな人生を営むことができるように、利用者一人一人の行き方を尊重し、日々の生活を楽しく過ごすことができるように支援いたします。
           </p>
@@ -84,7 +77,6 @@ export default function Home() {
             <p className={styles.sidebarH2}>NEWS・UPDATE INFORMATION</p>
             <h2>お知らせ・更新情報</h2>
           </div>
-          {/* <NewsList items={newsData.slice(0, 1)} /> */}
           <TopNewsClient />
           <Link href="/news/" className={styles.linkPage}>
             お知らせ・更新情報
@@ -97,7 +89,6 @@ export default function Home() {
             <p className={styles.sidebarH2}>blog</p>
             <h2>ブログ</h2>
           </div>
-          {/* <BlogList items={blogData.slice(0, 3)} /> */}
           <TopBlogClient />
           <Link href="/blog/" className={styles.linkPage}>
             ブログ一覧

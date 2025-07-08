@@ -1,17 +1,18 @@
 /* =======================================
- * TOP ページナビゲーション
+ * 梨園 TOP ページナビゲーション
  * URL:src/components/top/ContainerPageNav.tsx
  * Referenced in: src/app/page.tsx
  * Created: 2025-06-14
- * Last updated: 2025-06-14
+ * Last updated: 2025-07-08
  * ======================================= */
 import styles from '@/styles/PageTop.module.scss';
-import BanRecruit from '@/assets/images/top/ban-recruit.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import Link01 from '@/assets/images/top/link01.webp';
 import Link02 from '@/assets/images/top/link02.webp';
 import Link03 from '@/assets/images/top/link03.webp';
+import BanRecruit from '@/assets/images/top/ban-recruit.webp';
+import BanRecruitMobile from '@/assets/images/top/ban-recruit-sp.webp';
 
 const pageList = [
   {
@@ -51,7 +52,22 @@ const ContainerPageNav = () => {
           ))}
         </ul>
         <Link href="#" className={styles.linkRecruit}>
-          <Image src={BanRecruit} alt="採用情報" />
+          <span className={styles.wrapRecruitImage}>
+            <Image
+              src={BanRecruit}
+              alt="採用情報"
+              fill
+              // sizes="(max-width: 768px) 0px, 100vw"
+              className={styles.pcImage}
+            />
+            <Image
+              src={BanRecruitMobile}
+              alt="採用情報"
+              fill
+              // sizes="(max-width: 768px) 100vw, 0px"
+              className={styles.spImage}
+            />
+          </span>
         </Link>
       </article>
     </section>

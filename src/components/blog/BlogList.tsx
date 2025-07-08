@@ -18,9 +18,9 @@ type Props = {
 
 const BlogList = ({ items, showBody = false }: Props) => {
   return (
-    <ul className={styles.newsList}>
+    <ul className={styles.blogList}>
       {items.map((item) => (
-        <li key={item.id} className={styles.newsItem}>
+        <li key={item.id}>
           <Link href={`/blog/detail?id=${item.id}`}>
             <Image
               src={item.firstImage || '/images/no-image.webp'} // デフォルト画像を設定
@@ -32,7 +32,9 @@ const BlogList = ({ items, showBody = false }: Props) => {
           </Link>
           <h3>{item.title}</h3>
           {showBody && (
-            <p className={styles.excerpt}>{stripHtmlExceptBr(item.body.content)}</p>
+            <p className={styles.excerpt}>
+              {stripHtmlExceptBr(item.body.content)}
+            </p>
           )}
           <Link href={`/blog/detail?id=${item.id}`} className={styles.readMore}>
             <span>続きを読む</span>

@@ -50,7 +50,10 @@ export default function NewsDetailPage() {
       </section>
       <section className={styles.containerDetailContent}>
         <article>
-          <div dangerouslySetInnerHTML={{ __html: data.k_body }} />
+          <div
+            dangerouslySetInnerHTML={{ __html: data.k_body }}
+            className={styles.itemDetails}
+          />
         </article>
         <Link href="/news/" className={styles.linkList}>
           お知らせ一覧へ

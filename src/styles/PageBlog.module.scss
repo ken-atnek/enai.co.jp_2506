@@ -4,17 +4,19 @@
 /* =================================
 ** ブログリストレイアウト
 ------------------------------ */
-.newsList {
+.blogList {
     position: relative;
     grid-template-columns: repeat(3, 1fr);
     font-size: inherit;
-    gap: 0 3em;
+    gap: 2em 2em;
     display: grid;
+    grid-template-rows: auto auto auto auto;
+
     li {
         border: double 4px #81664b;
         display: grid;
         grid-row: span 4;
-        grid-template-rows: auto auto auto auto;
+        grid-template-rows: subgrid;
         font-size: inherit;
         gap: 1em 0;
         padding: 3em 2em 2em;
@@ -36,6 +38,7 @@
             line-height: 1.6em;
             display: -webkit-box;
             -webkit-box-orient: vertical;
+            line-clamp: 3;
             -webkit-line-clamp: 3;
             overflow: hidden;
         }
@@ -58,7 +61,53 @@
         }
     }
 }
-
+.wrapPager {
+    position: relative;
+    font-size: inherit;
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-between;
+    &:has(.next):not(:has(.prev)) {
+        justify-content: flex-end;
+    }
+    &:has(.prev):not(:has(.next)) {
+        justify-content: flex-start;
+    }
+    button {
+        position: relative;
+        font-size: FZ(16);
+        color: $base-orange;
+        transition: 0.3s ease-out;
+        &::after {
+            transition: 0.3s ease-out;
+            content: "";
+            position: absolute;
+            top: 50%;
+            translate: 0 -50%;
+            width: 1.2em;
+            @include svg-arrow-blog("ff9900");
+        }
+        &.prev {
+            padding-left: 1.6em;
+            &::after {
+                left: 0;
+                scale: -1 1;
+            }
+        }
+        &.next {
+            padding-right: 1.6em;
+            &::after {
+                right: 0;
+            }
+        }
+        @include hover {
+            color: $base-brown;
+            &::after {
+                @include svg-arrow-blog("81664b");
+            }
+        }
+    }
+}
 /* =================================
 ** ブログページトップ
 ------------------------------ */
@@ -134,16 +183,35 @@
         max-width: 84rem;
         display: flex;
         flex-direction: column;
-        gap: 1em 0;
-        p {
-            font-size: FZ(16);
-            line-height: 2em;
-            text-align: justify;
-            letter-spacing: 0.08em;
-        }
-        img {
-            width: fit-content;
-            max-width: 100%;
+        .itemDetails {
+            position: relative;
+            font-size: inherit;
+            display: flex;
+            flex-direction: column;
+            div {
+                font-size: FZ(16);
+                line-height: 2em;
+                text-align: justify;
+                letter-spacing: 0.08em;
+                figure {
+                    font-size: inherit;
+                    width: 100%;
+                    img {
+                        width: fit-content;
+                        max-width: 100%;
+                    }
+                }
+                &.image02 {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0 1em;
+                }
+                &.image03 {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 0 1em;
+                }
+            }
         }
     }
     .articleNav {

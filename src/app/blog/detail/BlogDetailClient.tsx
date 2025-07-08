@@ -51,19 +51,30 @@ export default function BlogDetailPage() {
         </article>
       </section>
       <section className={styles.containerDetailContent}>
-        <article><div dangerouslySetInnerHTML={{ __html: data.k_body }} /></article>
+        <article>
+          <div
+            dangerouslySetInnerHTML={{ __html: data.k_body }}
+            className={styles.itemDetails}
+          />
+        </article>
         <nav className={styles.articleNav}>
           <ul>
             <li>
               {data.k_back != null && (
-                <Link href={`/blog/detail?id=${data.k_back}`} className={styles.prev}>
+                <Link
+                  href={`/blog/detail?id=${data.k_back}`}
+                  className={styles.prev}
+                >
                   <span>前の記事へ</span>
                 </Link>
               )}
             </li>
             <li>
               {data.k_next != null && (
-                <Link href={`/blog/detail?id=${data.k_next}`} className={styles.next}>
+                <Link
+                  href={`/blog/detail?id=${data.k_next}`}
+                  className={styles.next}
+                >
                   <span>次の記事へ</span>
                 </Link>
               )}

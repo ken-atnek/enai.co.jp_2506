@@ -1,7 +1,10 @@
 'use client';
 /* =======================================
  * トップページ用 ブログ表示コンポーネント（最新3件）
- * URL: src/components/blog/TopBlogClient.tsx
+ * URL: src/components/top/TopBlogClient.tsx
+ * Referenced in: src/app/page.tsx
+ * Created: 2025-07-08
+ * Last updated: 2025-07-08
  * ======================================= */
 import { useEffect, useState } from 'react';
 import { fetchBlogs } from '@/lib/fetchBlogApi';

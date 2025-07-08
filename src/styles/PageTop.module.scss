@@ -1,6 +1,11 @@
+/* =================================
+ * 	TOP
+ * ------------------------------ */
 @use "variable" as *;
 @use "svg" as *;
 /* stylelint-disable no-descending-specificity */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-pattern */
 // このファイル全体のルールを無効にする
 
 .boxH2 {
@@ -10,6 +15,9 @@
     align-items: center;
     font-size: inherit;
     gap: 2em 0;
+    @include sp {
+        gap: 6vw 0;
+    }
     .sidebarH2 {
         @include Aleo;
         font-size: FZ(36);
@@ -17,11 +25,19 @@
         text-transform: uppercase;
         font-weight: 700;
         letter-spacing: 0.12em;
+        @include sp {
+            font-size: FZ(28);
+            letter-spacing: 0.2em;
+            text-align: center;
+        }
     }
     h2 {
         font-size: FZ(22);
         font-weight: 600;
         letter-spacing: 0.04em;
+        @include sp {
+            font-size: FZ(30);
+        }
     }
 }
 .linkPage {
@@ -47,8 +63,8 @@
     background-color: #000;
     overflow: hidden;
     @include sp {
-        height: 78vh;
-        height: 78dvh;
+        height: 60vh;
+        height: 60dvh;
     }
     .slideImage {
         position: absolute;
@@ -76,6 +92,9 @@
         justify-content: space-between;
         font-size: inherit;
         padding: 2em;
+        @include sp {
+            display: none;
+        }
         .itemLogo {
             font-size: inherit;
             display: flex;
@@ -98,6 +117,9 @@
             grid-template-columns: repeat(2, 1fr);
             font-size: inherit;
             gap: 0 1.6em;
+            @include sp {
+                display: none;
+            }
             a {
                 width: 216px;
                 height: 52px;
@@ -131,6 +153,10 @@
     align-items: center;
     background-color: $light-brown;
     padding: 2em 2em 4em;
+    @include sp {
+        padding: 6vw 4vw;
+        gap: 4vw 0;
+    }
     nav {
         position: relative;
         font-size: inherit;
@@ -138,6 +164,9 @@
         justify-content: center;
         gap: 0 1.4em;
         flex-wrap: wrap;
+        @include sp {
+            display: none;
+        }
         .itemLink {
             letter-spacing: 0.08em;
             font-size: FZ(16);
@@ -159,12 +188,28 @@
         flex-direction: column;
         align-items: center;
         margin-top: 7em;
+        @include sp {
+            display: contents;
+        }
         h2 {
             @include Serif;
             font-size: FZ(36);
             color: $base-brown;
             font-weight: 600;
             letter-spacing: 0.2em;
+            position: relative;
+            &::after {
+                content: "―";
+                @include sp {
+                    position: absolute;
+                    left: 50%;
+                    translate: -50%;
+                    top: calc(100% + 0.1em);
+                }
+            }
+            @include sp {
+                font-size: FZ(30);
+            }
         }
         p {
             font-size: FZ(18);
@@ -184,23 +229,35 @@
     flex-direction: column;
     align-items: center;
     padding: 5em 2em;
+    @include sp {
+        padding: 6vw 4vw;
+    }
     article {
         max-width: $articleMaxWidth;
         display: flex;
         flex-direction: column;
         align-items: center;
+        @include sp {
+            display: contents;
+        }
         h2 {
             @include Serif;
             font-size: FZ(42);
             color: $base-brown;
             font-weight: 600;
             letter-spacing: 0.08em;
+            @include sp {
+                font-size: FZ(36);
+            }
         }
         h3 {
             font-size: FZ(20);
             font-weight: 600;
             letter-spacing: 0.08em;
             margin-top: 2em;
+            @include sp {
+                font-size: FZ(24);
+            }
         }
         p {
             font-size: FZ(18);
@@ -228,12 +285,18 @@
     flex-direction: column;
     align-items: center;
     padding: 5em 2em;
+    @include sp {
+        padding: 6vw 4vw;
+    }
     article {
         max-width: $articleMaxWidth;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 4em 0;
+        @include sp {
+            display: contents;
+        }
     }
 }
 /* =================================
@@ -244,12 +307,18 @@
     flex-direction: column;
     align-items: center;
     padding: 5em 2em;
+    @include sp {
+        padding: 6vw 4vw;
+    }
     article {
         max-width: $articleMaxWidth;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 4em 0;
+        @include sp {
+            display: contents;
+        }
     }
 }
 /* =================================
@@ -261,17 +330,28 @@
     flex-direction: column;
     align-items: center;
     padding: 5em 2em 3em;
+    @include sp {
+        padding: 6vw 4vw;
+    }
     article {
         display: flex;
         flex-direction: column;
         align-items: center;
         max-width: $articleMaxWidth;
+        @include sp {
+            display: contents;
+        }
         .listPage {
             position: relative;
             font-size: inherit;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0 3em;
+            @include sp {
+                grid-template-columns: unset;
+                grid-auto-flow: row;
+                gap: 4vw 0;
+            }
             li {
                 position: relative;
                 font-size: inherit;
@@ -280,6 +360,9 @@
                 display: flex;
                 flex-direction: column;
                 gap: 1em 0;
+                @include sp {
+                    padding: 4vw 2vw;
+                }
                 &::before {
                     content: "";
                     width: 100%;
@@ -319,6 +402,9 @@
                     letter-spacing: 0.08em;
                     align-self: flex-end;
                     transition: 0.3s ease-out;
+                    @include sp {
+                        margin-top: unset;
+                    }
                     @include hover {
                         color: $base-brown;
                     }
@@ -328,6 +414,28 @@
         .linkRecruit {
             font-size: inherit;
             margin-top: 5em;
+            width: 100%;
+            .wrapRecruitImage {
+                position: relative;
+                display: block;
+                width: 100%;
+                aspect-ratio: 1110/138;
+                @include sp {
+                    aspect-ratio: 626/522;
+                }
+                .pcImage {
+                    display: block;
+                    @media (max-width: 768px) {
+                        display: none;
+                    }
+                }
+                .spImage {
+                    display: none;
+                    @media (max-width: 768px) {
+                        display: block;
+                    }
+                }
+            }
         }
     }
 }
