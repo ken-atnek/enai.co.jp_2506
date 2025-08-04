@@ -123,9 +123,9 @@ export default function ServicePage() {
           </p>
           <ExternalLink
             href="/pdf/rien.pdf"
-            aria-label="ご入園のしおり（PDFが開きます）"
+            aria-label="ご入居のしおり（PDFが開きます）"
           >
-            【ご入園のしおり】
+            【ご入居のしおり】
           </ExternalLink>
         </article>
       </section>
