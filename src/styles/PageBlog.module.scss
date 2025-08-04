@@ -228,17 +228,27 @@
                 figure {
                     font-size: inherit;
                     width: 100%;
-                    img {
-                        width: fit-content;
-                        max-width: 100%;
+                    a {
+                        pointer-events: none;
+                        font-size: inherit;
+                        img {
+                            width: fit-content;
+                            max-width: 100%;
+                        }
                     }
                 }
-                &.image02 {
+                &:global(.attachment-gallery--2),
+                &:global(.attachment-gallery--4),
+                &:global(.attachment-gallery--6),
+                &:global(.attachment-gallery--8) {
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     gap: 0 1em;
                 }
-                &.image03 {
+                &:global(.attachment-gallery--3),
+                &:global(.attachment-gallery--5),
+                &:global(.attachment-gallery--7),
+                &:global(.attachment-gallery--9) {
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
                     gap: 0 1em;

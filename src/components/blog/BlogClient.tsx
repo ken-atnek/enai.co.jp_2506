@@ -13,7 +13,7 @@ import type { BlogItem } from '@/types/blog';
 import BlogList from '@/components/blog/BlogList';
 import styles from '@/styles/PageBlog.module.scss';
 //APIから取得するデータの件数
-const PER_PAGE = 3;
+const PER_PAGE = 12;
 //ブログ一覧を表示するコンポーネント
 export default function BlogClient() {
   const [items, setItems] = useState<BlogItem[]>([]);
