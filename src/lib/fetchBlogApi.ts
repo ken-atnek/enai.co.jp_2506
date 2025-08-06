@@ -11,7 +11,7 @@ type ApiBlogItem = {
 export async function fetchBlogs(
   limit = 9,
   offset = 0,
-  apiUrl = `https://demo-enai.tuna-pic.co.jp/api/blog/index.php?limit=${limit}&offset=${offset}`
+  apiUrl = `https://enai.co.jp/api/blog/index.php?limit=${limit}&offset=${offset}`
 ): Promise<{ blogs: BlogItem[]; total: number }> {
   try {
     const res = await fetch(apiUrl);
