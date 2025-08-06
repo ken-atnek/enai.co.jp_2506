@@ -10,6 +10,7 @@ import { navMenu } from '@/data/navMenuData';
 import TopNewsClient from '@/components/top/TopNewsClient';
 import TopBlogClient from '@/components/top/TopBlogClient';
 import type { Metadata } from 'next';
+import ExternalLink from '@/components/common/ExternalLink';
 import Link from 'next/link';
 import ContainerPageNav from '@/components/top/ContainerPageNav';
 export const generateMetadata = (): Metadata => {
@@ -38,6 +39,14 @@ export default function Home() {
             </Link>
           ))}
         </nav>
+        <div className={styles.boxPdf}>
+          <ExternalLink
+            href="/pdf/rien.pdf"
+            aria-label="ご入居のしおり（PDFが開きます）"
+          >
+            【ご入居のしおり】
+          </ExternalLink>
+        </div>
         <article>
           <h2>「その人らしさ」を目指して</h2>
           <p>
