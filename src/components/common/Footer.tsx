@@ -33,7 +33,7 @@ const Footer = () => {
             <a href="mailto:contact@enai.co.jp" className={styles.itemMail}>
               contact@enai.co.jp
             </a>
-            <Link href="#" className={styles.linkContact}>
+            <Link href="/contact/" className={styles.linkContact}>
               お問い合わせページへ
             </Link>
           </div>
