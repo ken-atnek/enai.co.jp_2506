@@ -19,13 +19,13 @@ const pageList = [
     title: '梨園ので暮らし',
     image: Link01,
     description: '梨園での日々、主な生活の内容について',
-    url: '/#/',
+    url: '/concept/',
   },
   {
     title: 'ご利用案内',
     image: Link02,
     description: '入居条件や利用料金、規制などについて',
-    url: '/#/',
+    url: '/service/',
   },
   {
     title: '梨園のブログ',
@@ -51,7 +51,7 @@ const ContainerPageNav = () => {
             </li>
           ))}
         </ul>
-        <Link href="#" className={styles.linkRecruit}>
+        <Link href="/recruit/" className={styles.linkRecruit}>
           <span className={styles.wrapRecruitImage}>
             <Image
               src={BanRecruit}
