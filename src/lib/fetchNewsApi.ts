@@ -11,7 +11,7 @@ type ApiNewsItem = {
 export async function fetchNews(
   limit = 3,
   offset = 0,
-  apiUrl = `https://demo-enai.tuna-pic.co.jp/api/news/index.php?limit=${limit}&offset=${offset}`
+  apiUrl = `https://enai.co.jp/api/news/index.php?limit=${limit}&offset=${offset}`
 ): Promise<{ news: NewsItem[]; total: number }> {
   try {
     const res = await fetch(apiUrl);

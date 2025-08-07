@@ -27,7 +27,7 @@ export default function BlogDetailPage() {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     if (!id) return;
-    fetch(`https://demo-enai.tuna-pic.co.jp/api/blog/index.php?id=${id}`)
+    fetch(`https://enai.co.jp/api/blog/index.php?id=${id}`)
       .then((res) => {
         if (!res.ok) throw new Error('記事が見つかりません');
         return res.json();
