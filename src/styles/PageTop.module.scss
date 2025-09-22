@@ -182,6 +182,8 @@
             }
         }
     }
+
+    /*
     .topCaution {
         display: flex;
         flex-direction: column;
@@ -190,8 +192,8 @@
         background-color: $base-brown;
         margin-top: 3em;
         color: #fff;
-        outline: 1px dashed rgb(255 255 255); /* outlineでドットの線を追加 */
-        outline-offset: -0.3em; /* outline-offsetの値を-15pxにして内側に調整 */
+        outline: 1px dashed rgb(255 255 255); 
+        outline-offset: -0.3em; 
         gap: 1em 0;
         @include sp {
             padding: 6vw 4vw;
@@ -216,9 +218,10 @@
             display: inline-block;
         }
     }
+    */
     .boxPdf {
         font-size: inherit;
-        margin-top: 2em;
+        margin-top: 3em;
         background-color: #e08c73;
         color: #fff;
         padding: 0.8em 3em;
@@ -239,7 +242,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 4em;
+        margin-top: 3em;
         @include sp {
             display: contents;
         }
