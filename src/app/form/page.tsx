@@ -91,13 +91,10 @@ export default function Contact() {
     formData.append('addressDetail', addressDetail);
 
     try {
-      const response = await fetch(
-        'https://demo-enai.tuna-pic.co.jp/backend/contact.php',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
+      const response = await fetch('https://enai.co.jp/backend/contact.php', {
+        method: 'POST',
+        body: formData,
+      });
 
       const result = await response.json();
       // console.log('サーバーレスポンス:', result);
@@ -404,7 +401,7 @@ export default function Contact() {
                 </dd>
               </dl>
               <dl>
-                <dt>電話番号</dt>
+                <dt className={styles.formRequired}>電話番号</dt>
                 <dd>
                   <input
                     type="text"

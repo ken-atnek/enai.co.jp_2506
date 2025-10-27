@@ -39,6 +39,20 @@ export default function Home() {
             </Link>
           ))}
         </nav>
+        {/* <div className={styles.topCaution}>
+          <h3>お知らせ</h3>
+          <p>
+            8/17(日)に発生した雷雨により、ただいま電話が(0968-68-5222)が不通状態となっております。
+            <br />
+            お恐れ入りますが、当施設に関するお問い合わせについては
+            <br />
+            <ExternalLink href="tel:09072915302" aria-label="電話する">
+              TEL:090-7291-5302(代表)
+            </ExternalLink>
+            <br />
+            までご連絡ください。
+          </p>
+        </div> */}
         <div className={styles.boxPdf}>
           <ExternalLink
             href="/pdf/rien.pdf"

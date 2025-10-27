@@ -60,3 +60,12 @@
     background-size: contain;
     background-position: center center;
 }
+
+// PDFアイコン
+@mixin svg-icon-pdf2($color) {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117 128" fill="%23#{$color}"><path d="M43.38,55.44h-1.56v17.1h1.56c4.69,0,7.62-2.53,7.62-8.64s-2.92-8.46-7.62-8.46Z"/><path d="M113,0H20c-2.21,0-4,1.79-4,4v38H4c-2.21,0-4,1.79-4,4v36c0,2.21,1.79,4,4,4h12v38c0,2.21,1.79,4,4,4h93c2.21,0,4-1.79,4-4V4c0-2.21-1.79-4-4-4ZM19.7,67.64v8.94h-5.03v-25.16h8.26c5.58,0,9.86,1.94,9.86,7.89s-4.32,8.33-9.72,8.33h-3.37ZM109,120H24v-34h63c2.21,0,4-1.79,4-4v-36c0-2.21-1.79-4-4-4H24V8h85v112ZM36.78,76.58v-25.16h6.9c7.68,0,12.44,3.98,12.44,12.48s-4.76,12.68-12.17,12.68h-7.17ZM74.8,62.16v4.22h-8.94v10.2h-5.03v-25.16h15.5v4.18h-10.47v6.56h8.94Z"/>  <path d="M22.56,55.4h-2.86v8.26h3.03c3.47,0,5.13-1.46,5.13-4.35s-1.84-3.91-5.3-3.91Z"/></svg>');
+    aspect-ratio: 117/128;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
