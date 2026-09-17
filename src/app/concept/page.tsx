@@ -21,11 +21,13 @@ import Block0304 from '@/assets/images/concept/block03-04.webp';
 
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { getCanonicalMetadata } from '@/lib/metadata';
 export const generateMetadata = (): Metadata => {
   return {
     title: '梨園について｜住宅型有料老人ホーム 梨園',
     description:
       '住宅型有料老人ホーム 梨園の企業理念と経営方針をご紹介します。「信頼・誠実・挑戦」を柱に、地域社会とともに歩む企業としての想いを発信しています。',
+    ...getCanonicalMetadata('/concept/'),
   };
 };
 export default function ConceptPage() {

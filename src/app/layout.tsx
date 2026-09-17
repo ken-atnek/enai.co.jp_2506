@@ -12,6 +12,12 @@ import { Roboto } from 'next/font/google';
 import { Aleo } from 'next/font/google';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
+import {
+  metadataBase,
+  siteDescription,
+  siteName,
+  siteTitle,
+} from '@/lib/env';
 const notoSans = Noto_Sans_JP({
   subsets: ['latin'],
   weight: ['100', '300', '400', '500', '700', '900'],
@@ -27,35 +33,43 @@ const aleo = Aleo({
   weight: ['400', '700'],
   display: 'swap',
 });
-// 実際の本番環境かどうかを判定
-const isRealProduction = process.env.NEXT_PUBLIC_IS_REAL_PROD === 'true';
-
-// 本番のみ metadataBase を設定
-const metadataBase = isRealProduction
-  ? new URL(process.env.NEXT_PUBLIC_METADATA_BASE || 'http://enai.co.jp/')
-  : undefined;
-
 export const metadata: Metadata = {
-  ...(isRealProduction && {
-    metadataBase,
-    openGraph: {
-      url: metadataBase?.toString(),
-      type: 'website',
-      images: [
-        {
-          url: '/images/ogp.jpg',
-          width: 1200,
-          height: 630,
-          alt: '梨園のOGP画像',
+  title: siteTitle,
+  description: siteDescription,
+  ...(metadataBase
+    ? {
+        metadataBase,
+        openGraph: {
+          title: siteTitle,
+          description: siteDescription,
+          url: metadataBase.toString(),
+          siteName,
+          locale: 'ja_JP',
+          type: 'website',
+          images: [
+            {
+              url: '/images/ogp.jpg',
+              width: 1200,
+              height: 630,
+              alt: '梨園のOGP画像',
+            },
+          ],
         },
-      ],
-    },
-  }),
-  title: '住宅型有料老人ホーム　梨園',
-  description: isRealProduction
-    ? '住宅型の有料老人ホーム「梨園」は、熊本県荒尾市にある介護施設・有料老人ホームです。梨園は、住宅型の老人ホームであるため居住空間は快適で、一人の生活者として尊重・尊厳をもって寄り添っていきたいと考えております。 なお介護職・介護スタッフも募集中です。'
-    : undefined,
-  robots: isRealProduction ? 'index, follow' : 'noindex, nofollow',
+        twitter: {
+          card: 'summary_large_image',
+          title: siteTitle,
+          description: siteDescription,
+          images: [
+            {
+              url: new URL('/images/ogp.jpg', metadataBase).toString(),
+              alt: '梨園のOGP画像',
+            },
+          ],
+        },
+      }
+    : {
+        robots: 'noindex, nofollow',
+      }),
   icons: [
     {
       url: '/favicon.ico',

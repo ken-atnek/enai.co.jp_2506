@@ -11,11 +11,13 @@ import Image from 'next/image';
 import block01Image from '@/assets/images/service/service-image.webp';
 import ExternalLink from '@/components/common/ExternalLink';
 import type { Metadata } from 'next';
+import { getCanonicalMetadata } from '@/lib/metadata';
 export const generateMetadata = (): Metadata => {
   return {
     title: '料金・サービス｜住宅型有料老人ホーム 梨園',
     description:
-      '住宅型有料老人ホーム 梨園では、建物清掃・設備管理・警備業務など、快適な環境づくりを支える多様なサービスを提供しています。信頼と実績で地域社会に貢献します。',
+      '住宅型有料老人ホーム 梨園の利用料金とサービスをご案内します。月額利用料、介護保険サービス、入居手続きの流れなどをご確認いただけます。',
+    ...getCanonicalMetadata('/service/'),
   };
 };
 export default function ServicePage() {

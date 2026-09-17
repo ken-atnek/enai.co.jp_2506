@@ -17,11 +17,13 @@ import ImageList06 from '@/assets/images/about-enai/list06.webp';
 import Link from 'next/link';
 import ExternalLink from '@/components/common/ExternalLink';
 import type { Metadata } from 'next';
+import { getCanonicalMetadata } from '@/lib/metadata';
 export const generateMetadata = (): Metadata => {
   return {
     title: '縁合について｜合同会社 縁合',
     description:
       '縁合（えんあい）は、住宅型有料老人ホーム 梨園（りえん）、訪問介護事業所 梨園、いにしえ通所介護事業所、梨園 居宅介護支援事業所を運営する合同会社です。',
+    ...getCanonicalMetadata('/about-enai/'),
   };
 };
 export default function AboutEnaiPage() {

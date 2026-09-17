@@ -10,11 +10,13 @@ import NewsClient from '@/components/news/NewsClient';
 import PageTitle from '@/components/common/PageTitle';
 import styles from '@/styles/PageNews.module.scss';
 import type { Metadata } from 'next';
+import { getCanonicalMetadata } from '@/lib/metadata';
 export const generateMetadata = (): Metadata => {
   return {
     title: 'お知らせ・更新情報｜住宅型有料老人ホーム 梨園',
     description:
       '住宅型の有料老人ホーム「梨園」は、熊本県荒尾市にある介護施設・有料老人ホームです。梨園は、住宅型の老人ホームであるため居住空間は快適で、一人の生活者として尊重・尊厳をもって寄り添っていきたいと考えております。 なお介護職・介護スタッフも募集中です。',
+    ...getCanonicalMetadata('/news/'),
   };
 };
 export default function NewsPage() {

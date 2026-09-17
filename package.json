@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && rm -f out/404.html && rm -rf out/404",
-    "start": "next start",
-    "lint": "next lint",
-    "lint:style": "stylelint \"src/**/*.scss\" --fix"
+    "build": "next build && npm run cleanup:export",
+    "build:demo": "cross-env NEXT_PUBLIC_IS_REAL_PROD=false NEXT_PUBLIC_METADATA_BASE=https://demo-enai.tuna-pic.co.jp/ next build && npm run cleanup:export",
+    "build:prod": "cross-env NEXT_PUBLIC_IS_REAL_PROD=true NEXT_PUBLIC_METADATA_BASE=https://enai.co.jp/ next build && npm run cleanup:export",
+    "cleanup:export": "rm -f out/404.html && rm -rf out/404 out/backend",
+    "lint": "eslint .",
+    "lint:style": "stylelint \"src/**/*.scss\"",
+    "lint:style:fix": "stylelint \"src/**/*.scss\" --fix",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "15.3.3",
+    "next": "15.5.25",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -19,8 +23,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "15.5.25",
     "prettier": "^3.5.3",
     "sass": "^1.89.2",
     "stylelint": "^16.20.0",

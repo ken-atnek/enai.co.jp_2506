@@ -10,11 +10,13 @@ import styles from '@/styles/PageContact.module.scss';
 
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { getCanonicalMetadata } from '@/lib/metadata';
 export const generateMetadata = (): Metadata => {
   return {
     title: 'お問い合わせ｜住宅型有料老人ホーム 梨園',
     description:
-      '住宅型有料老人ホーム 梨園へのお問い合わせはこちらの専用フォームから承っております。ご質問・ご相談・求人に関するお問い合わせなど、お気軽にご連絡ください。。',
+      '住宅型有料老人ホーム 梨園へのお問い合わせはこちらの専用フォームから承っております。ご質問・ご相談・求人に関するお問い合わせなど、お気軽にご連絡ください。',
+    ...getCanonicalMetadata('/contact/'),
   };
 };
 export default function ContactPage() {

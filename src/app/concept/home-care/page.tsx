@@ -9,11 +9,13 @@ import styles from '@/styles/PageDayService.module.scss';
 import Link from 'next/link';
 import ExternalLink from '@/components/common/ExternalLink';
 import type { Metadata } from 'next';
+import { getCanonicalMetadata } from '@/lib/metadata';
 export const generateMetadata = (): Metadata => {
   return {
     title: '居宅介護支援事業所｜住宅型有料老人ホーム 梨園',
     description:
       '住宅型の有料老人ホーム「梨園」は、熊本県荒尾市にある介護施設・有料老人ホームです。梨園は、住宅型の老人ホームであるため居住空間は快適で、一人の生活者として尊重・尊厳をもって寄り添っていきたいと考えております。 なお介護職・介護スタッフも募集中です。',
+    ...getCanonicalMetadata('/concept/home-care/'),
   };
 };
 export default function HomeCarePage() {
